@@ -1,9 +1,10 @@
-import json, uuid
+import json, uuid, os
 from pathlib import Path
 import httpx
 root=Path(__file__).resolve().parents[1]
 credentials=json.loads((root/'.runtime/demo-credentials.json').read_text())
-base='http://127.0.0.1:4000/api/v1'
+config=dict(line.split('=',1) for line in (root/'.env').read_text().splitlines() if '=' in line and not line.startswith('#'))
+base=os.environ.get('FINCORE_SMOKE_BASE_URL',config['NEXT_PUBLIC_API_URL'])
 evidence=[]
 def call(c,method,path,body=None,headers=None):
     r=c.request(method,base+path,json=body,headers=headers)

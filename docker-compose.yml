@@ -39,14 +39,14 @@ services:
     image: axllent/mailpit:v1.34.0
     ports: ["127.0.0.1:8025:8025"]
     restart: unless-stopped
-    networks: [private]
+    networks: [private, egress]
   analytics:
     build: {context: ., dockerfile: infrastructure/docker/Analytics.Dockerfile}
     env_file: .env
     ports: ["127.0.0.1:${ANALYTICS_HOST_PORT:-8001}:8000"]
     healthcheck: {test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"], interval: 10s, timeout: 5s, retries: 10}
     restart: unless-stopped
-    networks: [private]
+    networks: [private, egress]
   migrate:
     image: fincore-node:local
     build: *node-build
@@ -83,7 +83,7 @@ services:
     depends_on: {api: {condition: service_healthy}}
     healthcheck: {test: [CMD, node, -e, "fetch('http://localhost:3000').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"], interval: 10s, timeout: 5s, retries: 10}
     restart: unless-stopped
-    networks: [private]
+    networks: [private, egress]
 volumes: {pgdata: {}, redisdata: {}}
 networks:
   private: {internal: true}
