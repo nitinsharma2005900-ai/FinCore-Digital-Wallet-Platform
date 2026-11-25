@@ -7,7 +7,11 @@ COPY apps/api/package.json apps/api/package.json
 COPY apps/worker/package.json apps/worker/package.json
 COPY packages/shared/package.json packages/shared/package.json
 RUN npm ci
-COPY . .
+COPY tsconfig*.json ./
+COPY apps ./apps
+COPY packages ./packages
+COPY database ./database
+COPY scripts ./scripts
 ENV DATABASE_URL=postgresql://build:build@localhost:5432/build
 ARG NEXT_PUBLIC_API_URL=http://127.0.0.1:4000/api/v1
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
