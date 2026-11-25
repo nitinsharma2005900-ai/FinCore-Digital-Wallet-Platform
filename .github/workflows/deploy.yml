@@ -1,0 +1,34 @@
+name: Approved deployment
+on:
+  workflow_dispatch:
+    inputs:
+      environment: {type: choice, options: [staging, production], required: true}
+      image_tag: {description: Previously verified immutable image tag, required: true}
+permissions: {contents: read}
+jobs:
+  deploy:
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate deployment target
+        env: {HEALTH_URL: '${{ vars.HEALTH_URL }}'}
+        run: test -n "$HEALTH_URL" && curl --fail --max-time 15 "$HEALTH_URL"
+      - name: Deploy selected revision through restricted SSH runner
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          REVISION: ${{ inputs.image_tag }}
+        run: |
+          test -n "$DEPLOY_HOST" && test -n "$DEPLOY_USER" && test -n "$DEPLOY_KEY" && test -n "$KNOWN_HOSTS"
+          echo "$REVISION" | grep -Eq '^[a-f0-9]{40}$'
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh -o BatchMode=yes "$DEPLOY_USER@$DEPLOY_HOST" "/opt/fincore/deploy-revision.sh $REVISION"
+      - name: Verify deployed readiness
+        env: {HEALTH_URL: '${{ vars.HEALTH_URL }}'}
+        run: curl --fail --retry 10 --retry-delay 5 --max-time 15 "$HEALTH_URL"

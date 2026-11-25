@@ -1,0 +1,37 @@
+[
+  {
+    "name": "lint",
+    "exitCode": 0,
+    "passed": true,
+    "elapsedSeconds": 4.128,
+    "completedAt": "2026-11-25T16:57:54.468Z"
+  },
+  {
+    "name": "typecheck",
+    "exitCode": 0,
+    "passed": true,
+    "elapsedSeconds": 10.445,
+    "completedAt": "2026-11-25T16:58:04.915Z"
+  },
+  {
+    "name": "test",
+    "exitCode": 0,
+    "passed": true,
+    "elapsedSeconds": 18.183,
+    "completedAt": "2026-11-25T16:58:23.098Z"
+  },
+  {
+    "name": "build",
+    "exitCode": 0,
+    "passed": true,
+    "elapsedSeconds": 19.802,
+    "completedAt": "2026-11-25T16:58:42.900Z"
+  },
+  {
+    "name": "docs",
+    "exitCode": 0,
+    "passed": true,
+    "elapsedSeconds": 1.226,
+    "completedAt": "2026-11-25T16:58:44.126Z"
+  }
+]

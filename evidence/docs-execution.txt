@@ -1,0 +1,5 @@
+
+> fincore@1.0.0 docs
+> tsx scripts/contracts.ts
+
+Generated OpenAPI and Postman contracts for 53 operations

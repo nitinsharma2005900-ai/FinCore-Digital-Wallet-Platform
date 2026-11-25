@@ -5,5 +5,5 @@ httpx>=0.28,<1
 pytest>=8,<10
 pytest-cov>=6,<8
 reportlab>=4.4,<5
-cryptography>=46,<49
+cryptography>=50,<51
 pip-audit>=2.9,<3

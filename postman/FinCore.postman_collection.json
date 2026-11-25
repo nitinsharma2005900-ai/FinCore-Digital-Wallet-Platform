@@ -1,0 +1,994 @@
+{
+  "info": {
+    "name": "FinCore Simulation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{accessToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Register a synthetic customer",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/auth/register",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Sign in; may return MFA challenge",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/auth/login",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "if (body.data.accessToken) pm.environment.set(\"accessToken\", body.data.accessToken);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Verify expiring simulated MFA code",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/auth/mfa",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Rotate HttpOnly refresh cookie; trusted Origin required",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/auth/refresh",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Revoke session family",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/auth/logout",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Issue five-minute sensitive-action token",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/auth/reauthenticate",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Current profile",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/me",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Update profile",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/me",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Update MFA or password",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/me/security",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List active own sessions",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/sessions",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Revoke own session",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/sessions/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Database-derived role dashboard",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/dashboard",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Own wallets with settled, held and available balances",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/wallets",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create INR wallet",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/wallets",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Rename, freeze or reactivate own wallet",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/wallets/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Own synthetic accounts",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/accounts",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create synthetic account",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/accounts",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Look up synthetic recipient by exact email",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/directory",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Own beneficiaries",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/beneficiaries",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create beneficiary",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/beneficiaries",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Remove own beneficiary",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/beneficiaries/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Python Decimal fee quote; internal transfer rate zero",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/transfers/quote",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Atomic confirmed double-entry transfer",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/transfers",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Own activity; paginated and filtered",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/transactions",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Own transaction with journal entries",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/transactions/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Own wallet reservations",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/holds",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Reserve available funds",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/holds",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Release own reservation",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/holds/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Own test payment intents",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/payment-intents",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create local or Stripe test intent",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/payment-intents",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Settle local simulator intent only",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/payment-intents/{{id}}/confirm",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Signed raw-body webhook; Stripe or timestamped local HMAC",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/webhooks/payments",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Own UTC date-range statement JSON/CSV/PDF",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/statements",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Compensations affecting own wallets",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/refunds",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Own disputes or support queue",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/disputes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Open dispute on own transaction",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/disputes",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Assign to self, investigate or resolve dispute",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/disputes/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Paginated own notifications",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/notifications",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Mark own notification read",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/notifications/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Risk decision-support queue",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/risk-alerts",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Resolve reviewed risk alert",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/risk-alerts/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Provider reconciliation results",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/reconciliation",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Reconcile latest 1000 provider intents",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/reconciliation/run",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Record discrepancy investigation",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/reconciliation/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Ledger integrity, refunds and settlements",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/finance",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Local compensation or queued Stripe test refund",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/finance/compensations",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "{{$guid}}"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List users without secrets",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/admin/users",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Change role/access and revoke sessions",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/admin/users/{{id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Platform settings",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/admin/settings",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Update maintenanceBanner or supportEmail",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/admin/settings/{{key}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Recover a failed notification or refund job",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/admin/jobs/retry",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Reauth-Token",
+            "value": "{{reauthToken}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Append-only audit history",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/audit",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "System metrics and ledger integrity",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/system",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    }
+  ]
+}

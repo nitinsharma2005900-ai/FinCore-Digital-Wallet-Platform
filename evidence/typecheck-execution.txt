@@ -1,0 +1,8 @@
+
+> fincore@1.0.0 typecheck
+> tsc --noEmit -p tsconfig.json && npm run typecheck -w @fincore/web
+
+
+> @fincore/web@1.0.0 typecheck
+> tsc --noEmit
+

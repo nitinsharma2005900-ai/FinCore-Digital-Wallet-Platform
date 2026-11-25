@@ -1,0 +1,16 @@
+<testsuites id="" name="" tests="6" failures="0" skipped="0" errors="0" time="23.338388000000002">
+<testsuite name="platform.spec.ts" timestamp="2026-11-25T16:56:26.200Z" hostname="" tests="6" failures="0" skipped="0" time="19.215" errors="0">
+<testcase name="customer funding, history, profile and statement controls" classname="platform.spec.ts" time="5.076">
+</testcase>
+<testcase name="support workspace" classname="platform.spec.ts" time="2.714">
+</testcase>
+<testcase name="operations workspace" classname="platform.spec.ts" time="2.819">
+</testcase>
+<testcase name="finance workspace" classname="platform.spec.ts" time="2.909">
+</testcase>
+<testcase name="admin workspace" classname="platform.spec.ts" time="3.017">
+</testcase>
+<testcase name="mobile navigation and visible simulation notice" classname="platform.spec.ts" time="2.68">
+</testcase>
+</testsuite>
+</testsuites>

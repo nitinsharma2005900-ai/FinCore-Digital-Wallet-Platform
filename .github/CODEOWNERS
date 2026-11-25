@@ -1,0 +1,5 @@
+# Replace with actual repository owners before enabling required CODEOWNER review.
+/database/ @nitinsharma2005900-ai
+/apps/api/src/ledger.ts @nitinsharma2005900-ai
+/apps/api/src/payments.ts @nitinsharma2005900-ai
+/services/financial-analytics/ @nitinsharma2005900-ai

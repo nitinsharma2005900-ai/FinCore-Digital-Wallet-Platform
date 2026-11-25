@@ -136,6 +136,18 @@ model Refund {
   providerId String?
   createdAt DateTime @default(now())
 }
+model ExternalRefund {
+  id String @id @default(uuid())
+  transactionId String @unique
+  holdId String @unique
+  actorId String
+  reason String
+  status String @default("PENDING")
+  providerId String?
+  compensationId String?
+  attempts Int @default(0)
+  createdAt DateTime @default(now())
+}
 model Dispute {
   id String @id @default(uuid())
   userId String

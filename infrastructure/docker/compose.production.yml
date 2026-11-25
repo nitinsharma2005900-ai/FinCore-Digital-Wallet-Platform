@@ -1,0 +1,12 @@
+# Use behind the HTTPS reverse proxy after setting domain/CORS/secrets.
+services:
+  api:
+    environment:
+      NODE_ENV: production
+      SEED_DEMO: "false"
+      WEB_ORIGIN: ${WEB_ORIGIN:?HTTPS origin required}
+  worker:
+    environment: {NODE_ENV: production, SEED_DEMO: "false"}
+  migrate:
+    environment: {NODE_ENV: production, SEED_DEMO: "false"}
+    command: [node, dist/scripts/migrate.js]

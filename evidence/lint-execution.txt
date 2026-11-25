@@ -1,0 +1,4 @@
+
+> fincore@1.0.0 lint
+> eslint apps packages scripts tests database/seeds
+

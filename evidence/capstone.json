@@ -1,0 +1,133 @@
+{
+  "before": {
+    "settled": "100.00",
+    "held": "0.00",
+    "available": "100.00"
+  },
+  "after": {
+    "settled": "125.00",
+    "held": "0.00",
+    "available": "125.00"
+  },
+  "recipient": {
+    "settled": "0.00",
+    "held": "0.00",
+    "available": "0.00"
+  },
+  "integrity": {
+    "balanced": true,
+    "invalidTransactions": [],
+    "debits": "50694.68",
+    "credits": "50694.68",
+    "entries": 26
+  },
+  "immutable": true,
+  "timeline": [
+    {
+      "at": "2026-11-25T16:48:38.725Z",
+      "incident": "concurrent-transfers",
+      "data": {
+        "fulfilled": 1,
+        "rejected": 1,
+        "source": {
+          "settled": "20.00",
+          "held": "0.00",
+          "available": "20.00"
+        },
+        "recipient": {
+          "settled": "80.00",
+          "held": "0.00",
+          "available": "80.00"
+        }
+      }
+    },
+    {
+      "at": "2026-11-25T16:48:38.820Z",
+      "incident": "duplicate-payment-events",
+      "data": {
+        "duplicate": true,
+        "outOfOrderIgnored": true,
+        "source": {
+          "settled": "45.00",
+          "held": "0.00",
+          "available": "45.00"
+        }
+      }
+    },
+    {
+      "at": "2026-11-25T16:48:38.838Z",
+      "incident": "failed-settlement",
+      "data": {
+        "credited": false
+      }
+    },
+    {
+      "at": "2026-11-25T16:48:38.850Z",
+      "incident": "mismatched-provider-settlement",
+      "data": {
+        "duplicate": false,
+        "status": "AMOUNT_MISMATCH"
+      }
+    },
+    {
+      "at": "2026-11-25T16:48:38.870Z",
+      "incident": "financial-reversal",
+      "data": {
+        "original": "f5c83f6d-e268-45e4-9ab4-48a3722496df",
+        "compensation": "6a957803-5133-47ad-aa6e-e5595b3ad8ba"
+      }
+    },
+    {
+      "at": "2026-11-25T16:48:38.887Z",
+      "incident": "unbalanced-journal",
+      "data": {
+        "rejected": true,
+        "rolledBack": true
+      }
+    },
+    {
+      "at": "2026-11-25T16:48:38.960Z",
+      "incident": "dependency-timeout",
+      "data": {
+        "safeFailure": true,
+        "recovered": {
+          "fee": "0.00",
+          "total": "1.00",
+          "currency": "INR",
+          "rounding": "ROUND_HALF_EVEN"
+        }
+      }
+    },
+    {
+      "at": "2026-11-25T16:48:38.978Z",
+      "incident": "suspicious-activity",
+      "data": {
+        "score": 100,
+        "level": "HIGH",
+        "reasons": [
+          {
+            "code": "LARGE_TRANSFER",
+            "explanation": "Transfer is at least INR 100,000"
+          },
+          {
+            "code": "HIGH_VELOCITY",
+            "explanation": "At least five transfers in the past hour"
+          },
+          {
+            "code": "FAILED_PAYMENTS",
+            "explanation": "At least three recent failed payment attempts"
+          },
+          {
+            "code": "RAPID_BENEFICIARIES",
+            "explanation": "At least three beneficiaries added in one hour"
+          },
+          {
+            "code": "UNUSUAL_FREQUENCY",
+            "explanation": "At least twenty transfers in one day"
+          }
+        ],
+        "notice": "Decision support only; not proof of fraud."
+      }
+    }
+  ]
+}

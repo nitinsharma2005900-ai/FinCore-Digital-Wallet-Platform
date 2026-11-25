@@ -1,0 +1,9 @@
+{
+  "notificationId": "75012bad-7c39-446f-abda-c871d4f09139",
+  "failedAttempts": 2,
+  "finalAttempts": 3,
+  "status": "SENT",
+  "emailCaptured": true,
+  "provider": "Mailpit local SMTP",
+  "scope": "Controlled local SMTP outage; BullMQ retries and outbox recovery"
+}

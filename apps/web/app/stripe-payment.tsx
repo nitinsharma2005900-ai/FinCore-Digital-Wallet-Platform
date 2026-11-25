@@ -1,0 +1,9 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
+import {loadStripe,Stripe,StripeElements} from '@stripe/stripe-js';
+export function StripePayment({clientSecret,onComplete}:{clientSecret:string;onComplete:()=>void}){
+ const mount=useRef<HTMLDivElement>(null),stripe=useRef<Stripe|null>(null),elements=useRef<StripeElements|null>(null);const [error,setError]=useState(''),[ready,setReady]=useState(false),[busy,setBusy]=useState(false);
+ useEffect(()=>{let disposed=false;let cleanup=()=>{};const key=process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;if(!key?.startsWith('pk_test_')){setError('Configure a Stripe test publishable key to use the test checkout.');return;}void loadStripe(key).then(s=>{if(disposed||!s||!mount.current)return;stripe.current=s;elements.current=s.elements({clientSecret});const payment=elements.current.create('payment');payment.mount(mount.current);payment.on('ready',()=>setReady(true));cleanup=()=>payment.destroy();}).catch(()=>setError('Stripe test checkout could not load'));return()=>{disposed=true;cleanup();};},[clientSecret]);
+ async function confirm(){if(!stripe.current||!elements.current)return;setBusy(true);try{const result=await stripe.current.confirmPayment({elements:elements.current,confirmParams:{return_url:window.location.href},redirect:'if_required'});if(result.error)setError(result.error.message||'Test payment confirmation failed');else onComplete();}catch{setError('Test payment provider unavailable');}finally{setBusy(false);}}
+ return <section className="card form"><h3>Stripe test checkout</h3><p>Test mode only. Wallet funding appears after the signed provider webhook settles.</p><div ref={mount}/>{error&&<p role="alert" className="error">{error}</p>}<button disabled={!ready||busy} onClick={()=>void confirm()}>{busy?'Confirming…':'Confirm test payment'}</button></section>;
+}

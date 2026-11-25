@@ -1,0 +1,48 @@
+import 'dotenv/config';
+import {z} from 'zod';
+import {money,loginSchema,registerSchema,transferSchema} from '../../../packages/shared/src';
+const s=z.string(),text=z.string().min(2).max(200),id=z.string().min(1),password=z.string().min(1).max(128);
+type Endpoint={method:string;path:string;summary:string;body?:z.ZodType;roles?:string[];sensitive?:boolean;key?:boolean;query?:Record<string,unknown>};
+export const endpoints:Endpoint[]=[
+ {method:'post',path:'/auth/register',summary:'Register a synthetic customer',body:registerSchema,roles:[]},
+ {method:'post',path:'/auth/login',summary:'Sign in; may return MFA challenge',body:loginSchema,roles:[]},
+ {method:'post',path:'/auth/mfa',summary:'Verify expiring simulated MFA code',body:z.object({challengeId:id,code:s.regex(/^\d{6}$/)}),roles:[]},
+ {method:'post',path:'/auth/refresh',summary:'Rotate HttpOnly refresh cookie; trusted Origin required',roles:[]},
+ {method:'post',path:'/auth/logout',summary:'Revoke session family'},
+ {method:'post',path:'/auth/reauthenticate',summary:'Issue five-minute sensitive-action token',body:z.object({password})},
+ {method:'get',path:'/me',summary:'Current profile'},{method:'patch',path:'/me',summary:'Update profile',body:z.object({name:text,phone:s.nullable().optional()})},
+ {method:'patch',path:'/me/security',summary:'Update MFA or password',sensitive:true,body:z.object({mfaEnabled:z.boolean().optional(),password:s.min(12).optional()})},
+ {method:'get',path:'/sessions',summary:'List active own sessions'},{method:'delete',path:'/sessions/{id}',summary:'Revoke own session',sensitive:true},
+ {method:'get',path:'/dashboard',summary:'Database-derived role dashboard'},
+ {method:'get',path:'/wallets',summary:'Own wallets with settled, held and available balances'},
+ {method:'post',path:'/wallets',summary:'Create INR wallet',roles:['CUSTOMER'],body:z.object({name:text})},
+ {method:'patch',path:'/wallets/{id}',summary:'Rename, freeze or reactivate own wallet',roles:['CUSTOMER'],sensitive:true,body:z.object({name:text.optional(),status:z.enum(['ACTIVE','FROZEN']).optional()})},
+ {method:'get',path:'/accounts',summary:'Own synthetic accounts'},{method:'post',path:'/accounts',summary:'Create synthetic account',roles:['CUSTOMER'],body:z.object({label:text})},
+ {method:'get',path:'/directory',summary:'Look up synthetic recipient by exact email',roles:['CUSTOMER'],query:{email:{type:'string',format:'email'}}},
+ {method:'get',path:'/beneficiaries',summary:'Own beneficiaries',roles:['CUSTOMER']},
+ {method:'post',path:'/beneficiaries',summary:'Create beneficiary',roles:['CUSTOMER'],sensitive:true,body:z.object({name:text,walletId:id})},
+ {method:'delete',path:'/beneficiaries/{id}',summary:'Remove own beneficiary',roles:['CUSTOMER'],sensitive:true},
+ {method:'post',path:'/transfers/quote',summary:'Python Decimal fee quote; internal transfer rate zero',roles:['CUSTOMER'],body:z.object({amount:money})},
+ {method:'post',path:'/transfers',summary:'Atomic confirmed double-entry transfer',roles:['CUSTOMER'],sensitive:true,key:true,body:transferSchema},
+ {method:'get',path:'/transactions',summary:'Own activity; paginated and filtered',query:{page:{type:'integer',minimum:1},limit:{type:'integer',maximum:100},search:{type:'string'},sort:{enum:['asc','desc']},kind:{enum:['TRANSFER','FUNDING','REFUND','REVERSAL']},status:{enum:['PENDING','POSTED','FAILED']}}},
+ {method:'get',path:'/transactions/{id}',summary:'Own transaction with journal entries'},
+ {method:'get',path:'/holds',summary:'Own wallet reservations'},{method:'post',path:'/holds',summary:'Reserve available funds',roles:['CUSTOMER'],sensitive:true,body:z.object({walletId:id,amount:money,reason:text})},{method:'delete',path:'/holds/{id}',summary:'Release own reservation',roles:['CUSTOMER'],sensitive:true},
+ {method:'get',path:'/payment-intents',summary:'Own test payment intents',roles:['CUSTOMER']},{method:'post',path:'/payment-intents',summary:'Create local or Stripe test intent',roles:['CUSTOMER'],key:true,body:z.object({walletId:id,amount:money})},
+ {method:'post',path:'/payment-intents/{id}/confirm',summary:'Settle local simulator intent only',roles:['CUSTOMER'],body:z.object({outcome:z.enum(['success','failed'])})},
+ {method:'post',path:'/webhooks/payments',summary:'Signed raw-body webhook; Stripe or timestamped local HMAC',roles:[],body:z.object({id,providerId:id,type:z.enum(['payment.succeeded','payment.failed']),amount:money})},
+ {method:'get',path:'/statements',summary:'Own UTC date-range statement JSON/CSV/PDF',query:{walletId:{type:'string'},from:{type:'string',format:'date'},to:{type:'string',format:'date'},format:{enum:['json','csv','pdf']}}},
+ {method:'get',path:'/refunds',summary:'Compensations affecting own wallets'},
+ {method:'get',path:'/disputes',summary:'Own disputes or support queue',roles:['CUSTOMER','SUPPORT']},{method:'post',path:'/disputes',summary:'Open dispute on own transaction',roles:['CUSTOMER'],body:z.object({transactionId:id,reason:s.min(10).max(1000)})},
+ {method:'patch',path:'/disputes/{id}',summary:'Assign to self, investigate or resolve dispute',roles:['SUPPORT'],body:z.object({status:z.enum(['INVESTIGATING','RESOLVED','REJECTED']),resolution:s.min(10).max(1000)})},
+ {method:'get',path:'/notifications',summary:'Paginated own notifications'},{method:'patch',path:'/notifications/{id}',summary:'Mark own notification read'},
+ {method:'get',path:'/risk-alerts',summary:'Risk decision-support queue',roles:['OPERATIONS']},{method:'patch',path:'/risk-alerts/{id}',summary:'Resolve reviewed risk alert',roles:['OPERATIONS'],body:z.object({resolution:s.min(10).max(1000)})},
+ {method:'get',path:'/reconciliation',summary:'Provider reconciliation results',roles:['OPERATIONS']},{method:'post',path:'/reconciliation/run',summary:'Reconcile latest 1000 provider intents',roles:['OPERATIONS']},{method:'patch',path:'/reconciliation/{id}',summary:'Record discrepancy investigation',roles:['OPERATIONS'],body:z.object({resolution:s.min(10).max(1000)})},
+ {method:'get',path:'/finance',summary:'Ledger integrity, refunds and settlements',roles:['FINANCE']},{method:'post',path:'/finance/compensations',summary:'Local compensation or queued Stripe test refund',roles:['FINANCE'],sensitive:true,key:true,body:z.object({transactionId:id,kind:z.enum(['REFUND','REVERSAL']),reason:s.min(10).max(200)})},
+ {method:'get',path:'/admin/users',summary:'List users without secrets',roles:['ADMIN']},{method:'patch',path:'/admin/users/{id}',summary:'Change role/access and revoke sessions',roles:['ADMIN'],sensitive:true,body:z.object({role:z.enum(['CUSTOMER','SUPPORT','OPERATIONS','FINANCE','ADMIN']).optional(),disabled:z.boolean().optional()})},
+ {method:'get',path:'/admin/settings',summary:'Platform settings',roles:['ADMIN']},{method:'put',path:'/admin/settings/{key}',summary:'Update maintenanceBanner or supportEmail',roles:['ADMIN'],sensitive:true,body:z.object({value:s.max(200)})},
+ {method:'post',path:'/admin/jobs/retry',summary:'Recover a failed notification or refund job',roles:['ADMIN'],sensitive:true,body:z.object({id,type:z.enum(['notification','refund'])})},
+ {method:'get',path:'/audit',summary:'Append-only audit history',roles:['ADMIN']},{method:'get',path:'/system',summary:'System metrics and ledger integrity',roles:['ADMIN']}
+];
+const paths:Record<string,any>={};
+for(const e of endpoints){const parameters:any[]=[...Array.from(e.path.matchAll(/\{(\w+)\}/g)).map(m=>({name:m[1],in:'path',required:true,schema:{type:'string'}})),...Object.entries(e.query||{}).map(([name,schema])=>({name,in:'query',required:['walletId','from','to','email'].includes(name),schema}))];if(e.key)parameters.push({name:'Idempotency-Key',in:'header',required:true,schema:{type:'string',minLength:8,maxLength:128}});if(e.sensitive)parameters.push({name:'X-Reauth-Token',in:'header',required:true,schema:{type:'string'}});if(e.path==='/webhooks/payments')parameters.push({name:'X-Fincore-Signature',in:'header',schema:{type:'string'},description:'local: t=unix_seconds,v1=HMAC_SHA256(secret,timestamp.raw_body); five minute tolerance. Stripe mode uses Stripe-Signature.'});paths[e.path]||={};paths[e.path][e.method]={summary:e.summary,operationId:e.method+e.path.replace(/[^a-zA-Z]/g,'_'),tags:[e.path.split('/')[1]],description:`Allowed roles: ${e.roles?.length?e.roles.join(', '):e.roles?'Public / signed provider':'Any authenticated user; ownership enforced'}.`,security:e.roles?.length===0?[]:[{bearerAuth:[]}],parameters,...(e.body?{requestBody:{required:true,content:{'application/json':{schema:z.toJSONSchema(e.body,{unrepresentable:'any'})}}}}:{}),responses:Object.fromEntries([200,201,400,401,403,404,409,422,429,503].map(code=>[code,{description:code<300?'Success envelope { data, meta?, requestId }':'Safe error envelope { error: { code, message }, requestId }',content:{'application/json':{schema:{$ref:code<300?'#/components/schemas/Success':'#/components/schemas/Error'}}}}]))};}
+export const openapi={openapi:'3.1.0',info:{title:'FinCore Simulation API',version:'1.0.0',description:'Simulation Only – No Real Money. Monetary fields are exact decimal strings. Read docs/API.md for lifecycle, locking and retry rules.'},servers:[{url:process.env.NEXT_PUBLIC_API_URL||'http://127.0.0.1:4000/api/v1'}],paths,components:{securitySchemes:{bearerAuth:{type:'http',scheme:'bearer',bearerFormat:'JWT'}},schemas:{Success:{type:'object',properties:{data:{},meta:{type:'object'},requestId:{type:'string'}},required:['data','requestId']},Error:{type:'object',properties:{error:{type:'object',properties:{code:{type:'string'},message:{type:'string'}},required:['code','message']},requestId:{type:'string'}}}}}};

@@ -1,0 +1,14 @@
+node_modules
+**/node_modules
+**/.next
+.venv
+.tools
+.runtime
+.git
+.env
+.env.*
+!.env.example
+dist
+coverage
+*.zip
+evidence

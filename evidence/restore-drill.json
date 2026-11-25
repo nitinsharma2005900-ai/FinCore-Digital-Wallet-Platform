@@ -1,0 +1,22 @@
+{
+  "encryption": "AES-256-GCM; scrypt-derived key; fresh salt and nonce",
+  "before": {
+    "transactions": 16,
+    "entries": 32,
+    "debits": "50709.68",
+    "credits": "50709.68",
+    "unbalanced": 0
+  },
+  "after": {
+    "transactions": 16,
+    "entries": 32,
+    "debits": "50709.68",
+    "credits": "50709.68",
+    "unbalanced": 0
+  },
+  "verified": true,
+  "elapsedSeconds": 6.2610471999505535,
+  "backupPath": ".runtime\\backups\\fincore-29605ac400b64a3aae2103fdc79d66f6.enc",
+  "restoredDatabaseDropped": true,
+  "scope": "Synthetic local PostgreSQL database. Not a cloud backup or disaster recovery SLA."
+}

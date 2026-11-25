@@ -65,6 +65,8 @@ customer.post('/transfers/quote',allow('CUSTOMER'),async(req,res)=>{const body=z
 customer.post('/transfers',allow('CUSTOMER'),reauthenticated,async(req,res)=>{
  const body=transferSchema.parse(req.body);await ownWallet(body.fromWalletId,req.actor!.id);
  const key=z.string().min(8).max(128).parse(req.headers['idempotency-key']);
+ const previous=await db.idempotency.findUnique({where:{id:`transfer:${req.actor!.id}:${key}`}});
+ if(previous){const original=await db.transaction.findUniqueOrThrow({where:{id:previous.transactionId}});const replay=await post({fromWalletId:body.fromWalletId,toWalletId:original.toWalletId,amount:body.amount,currency:body.currency,kind:'TRANSFER',description:body.description,userId:req.actor!.id,key,scope:`transfer:${req.actor!.id}`,requestId:req.requestId,fingerprint:body.beneficiaryId});res.status(201);return send(res,replay);}
  const beneficiary=await db.beneficiary.findFirst({where:{id:body.beneficiaryId,userId:req.actor!.id}});if(!beneficiary)fail(404,'NOT_FOUND','Beneficiary not found');
  const hour=new Date(Date.now()-3600000),day=new Date(Date.now()-86400000);
  const result=await analytics('/risk',{amount:body.amount,transfersLastHour:await db.transaction.count({where:{userId:req.actor!.id,kind:'TRANSFER',createdAt:{gte:hour}}}),transfersLastDay:await db.transaction.count({where:{userId:req.actor!.id,kind:'TRANSFER',createdAt:{gte:day}}}),failedPaymentsLastHour:await db.paymentIntent.count({where:{userId:req.actor!.id,status:'FAILED',createdAt:{gte:hour}}}),beneficiariesLastHour:await db.beneficiary.count({where:{userId:req.actor!.id,createdAt:{gte:hour}}})});
