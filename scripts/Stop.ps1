@@ -1,6 +1,17 @@
+param([switch]$WorkerOnly)
 Set-Location (Split-Path $PSScriptRoot -Parent)
-foreach ($name in @('web','api','analytics','redis','mailpit')) {
+$serviceNames = if ($WorkerOnly) { @('worker') } else { @('web','api','analytics','worker','redis','mailpit') }
+foreach ($name in $serviceNames) {
  $pidFile = Join-Path '.runtime' ($name+'.pid')
- if (Test-Path $pidFile) { Stop-Process -Id ([int](Get-Content $pidFile)) -ErrorAction SilentlyContinue; Remove-Item -LiteralPath $pidFile }
+ if (Test-Path $pidFile) {
+  $ownedPid = [int](Get-Content $pidFile)
+  $ownedProcess = Get-CimInstance Win32_Process -Filter "ProcessId=$ownedPid" -ErrorAction SilentlyContinue
+  if ($ownedProcess) {
+   $isProjectProcess = $ownedProcess.CommandLine -match 'FinCore|apps[/\\](api|worker)[/\\]src[/\\]'
+   if (!$isProjectProcess) { throw "Refusing to stop unrelated process $ownedPid from stale $pidFile" }
+   & taskkill.exe /PID $ownedPid /T /F | Out-Null
+  }
+  Remove-Item -LiteralPath $pidFile
+ }
 }
-& .tools/pgsql/bin/pg_ctl.exe stop -D .runtime/postgres -m fast
+if (!$WorkerOnly) { & .tools/pgsql/bin/pg_ctl.exe stop -D .runtime/postgres -m fast }
