@@ -31,6 +31,7 @@ jobs:
       SEED_DEMO: "true"
     steps:
       - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
       - uses: actions/setup-node@v4
         with: {node-version: 22, cache: npm}
       - uses: actions/setup-python@v5
@@ -63,6 +64,7 @@ jobs:
         with: {image-ref: 'fincore:${{ github.sha }}', severity: 'CRITICAL,HIGH', exit-code: '1'}
       - run: docker save fincore:${{ github.sha }} -o fincore-image.tar
       - uses: actions/attest-build-provenance@v2
+        if: github.event.repository.private == false
         with: {subject-path: fincore-image.tar}
       - uses: actions/upload-artifact@v4
         with: {name: 'fincore-image-${{ github.sha }}', path: fincore-image.tar}

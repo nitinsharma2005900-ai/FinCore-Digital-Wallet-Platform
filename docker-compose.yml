@@ -1,4 +1,10 @@
 name: fincore
+x-node-build: &node-build
+  context: .
+  dockerfile: infrastructure/docker/Node.Dockerfile
+  args:
+    NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://127.0.0.1:4001/api/v1}
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}
 x-app-env: &app-env
   NODE_ENV: development
   HOST: 0.0.0.0
@@ -42,14 +48,16 @@ services:
     restart: unless-stopped
     networks: [private]
   migrate:
-    build: {context: ., dockerfile: infrastructure/docker/Node.Dockerfile}
+    image: fincore-node:local
+    build: *node-build
     env_file: .env
     environment: *app-env
     command: [sh, -c, "node dist/scripts/migrate.js && node dist/database/seeds/seed.js"]
     depends_on: {postgres: {condition: service_healthy}}
     networks: [private]
   api:
-    build: {context: ., dockerfile: infrastructure/docker/Node.Dockerfile}
+    image: fincore-node:local
+    pull_policy: never
     env_file: .env
     environment: *app-env
     ports: ["127.0.0.1:${API_HOST_PORT:-4001}:4000"]
@@ -58,7 +66,8 @@ services:
     restart: unless-stopped
     networks: [private, egress]
   worker:
-    build: {context: ., dockerfile: infrastructure/docker/Node.Dockerfile}
+    image: fincore-node:local
+    pull_policy: never
     env_file: .env
     environment: *app-env
     command: [node, dist/apps/worker/src/index.js]
@@ -67,11 +76,8 @@ services:
     restart: unless-stopped
     networks: [private, egress]
   web:
-    build:
-      context: .
-      dockerfile: infrastructure/docker/Node.Dockerfile
-      args:
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://127.0.0.1:4001/api/v1}
+    image: fincore-node:local
+    pull_policy: never
     command: [npm, run, start, -w, "@fincore/web"]
     ports: ["127.0.0.1:3000:3000"]
     depends_on: {api: {condition: service_healthy}}

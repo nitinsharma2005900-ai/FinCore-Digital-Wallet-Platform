@@ -1,5 +1,8 @@
 # Run alongside the native stack without changing its database or ports.
 services:
+  migrate:
+    build:
+      args: {NEXT_PUBLIC_API_URL: "http://127.0.0.1:4101/api/v1"}
   api:
     ports: !override ["127.0.0.1:4101:4000"]
     environment: {WEB_ORIGIN: "http://127.0.0.1:3100"}
@@ -9,5 +12,3 @@ services:
     ports: !override ["127.0.0.1:8125:8025"]
   web:
     ports: !override ["127.0.0.1:3100:3000"]
-    build:
-      args: {NEXT_PUBLIC_API_URL: "http://127.0.0.1:4101/api/v1"}
