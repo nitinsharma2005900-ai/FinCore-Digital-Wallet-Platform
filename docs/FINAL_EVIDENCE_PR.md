@@ -1,0 +1,7 @@
+Successful password confirmations could exhaust the authentication allowance, sign-out after registration returned to account creation, and customer balances could stay cached after staff refunds. These behaviors are corrected and covered by extended Chrome workflows with disposable customer records and the existing staff roles.
+
+The browser checks exercise successful and failed local funding, transfers, exports, MFA, session revocation, disputes, reconciliation, refunds, administrative controls and failed-notification recovery through Mailpit. The customer overview asserts the exact balance after staff compensation. Generated documentation and the sanitized submission archive include the new evidence.
+
+Validation: 19 Node/API/frontend tests and 14 native Chrome browser tests passed. Lint, type checks and the production build passed. Existing evidence also records 8 Python tests, 6 container browser tests, capstone and encrypted restore results; those earlier runs are distinct from this browser verification. See docs/BROWSER_FUNCTION_CHECK.md for scope and observed failures.
+
+The hosted image-security gate still has unresolved OS advisories. Stripe/Twilio execution, independent approval and cloud deployment remain incomplete. See ASSESSMENT_MATRIX.md, evidence/image-scan-summary.json and docs/deployment/FREE_HOSTING.md. Secrets, runtime credentials, dependency folders and browser caches are excluded from the ZIP.

@@ -1,0 +1,24 @@
+{
+  "verifiedAt": "2026-11-26T00:10:26.748343+05:30",
+  "browser": "Chrome via Playwright (headless)",
+  "localhost": "http://127.0.0.1:3000",
+  "browserTests": 14,
+  "browserFailures": 0,
+  "browserSkipped": 0,
+  "nodeTests": 19,
+  "nativeHealthChecksPassed": true,
+  "privateValueArchiveScan": "PASS (10 local private values checked without disclosure)",
+  "stagedDiffSecretScan": "PASS",
+  "fixtures": "Disposable customer accounts and an explicitly FAILED local notification; original implementation retained.",
+  "limitations": [
+    "External Stripe/Twilio execution unverified",
+    "External Stripe refund delivery unverified",
+    "Cloud deployment incomplete",
+    "Hosted image-security gate has unresolved OS advisories"
+  ],
+  "reports": [
+    "evidence/browser-tests.xml",
+    "docs/BROWSER_FUNCTION_CHECK.md",
+    "docs/FinCore_Project_Report.pdf"
+  ]
+}

@@ -17,21 +17,21 @@
     "name": "lint",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 5.373,
-    "completedAt": "2026-11-25T18:01:12.377Z"
+    "elapsedSeconds": 6.709,
+    "completedAt": "2026-11-25T18:38:00.270Z"
   },
   {
     "name": "typecheck",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 17.94,
-    "completedAt": "2026-11-25T18:01:30.319Z"
+    "elapsedSeconds": 15.145,
+    "completedAt": "2026-11-25T18:38:15.418Z"
   },
   {
     "name": "build",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 28.93,
-    "completedAt": "2026-11-25T18:01:59.249Z"
+    "elapsedSeconds": 28.138,
+    "completedAt": "2026-11-25T18:38:43.556Z"
   }
 ]

@@ -8,7 +8,8 @@ import { config } from './config';
 import { db,fail,send,tokenHash,audit,Actor,AppError } from './core';
 import { loginSchema,registerSchema } from '../../../packages/shared/src';
 export const auth=Router();
-auth.use(rateLimit({windowMs:15*60*1000,limit:process.env.NODE_ENV==='test'?1000:40,standardHeaders:'draft-8',legacyHeaders:false,message:{error:{code:'AUTH_RATE_LIMIT',message:'Too many authentication attempts; try again later'}}}));
+// Count failed credential attempts, not successful session refreshes or sensitive-action confirmations.
+auth.use(rateLimit({windowMs:15*60*1000,limit:40,skipSuccessfulRequests:true,skip:req=>req.path==='/refresh'&&req.method==='POST'&&!req.cookies.fincore_refresh,standardHeaders:'draft-8',legacyHeaders:false,message:{error:{code:'AUTH_RATE_LIMIT',message:'Too many authentication attempts; try again later'}}}));
 const mfaHash=(code:string)=>createHmac('sha256',config.MFA_SECRET).update(code).digest('hex');
 const safeUser=(u:{id:string;name:string;email:string;role:string;mfaEnabled:boolean;phone:string|null})=>({id:u.id,name:u.name,email:u.email,role:u.role,mfaEnabled:u.mfaEnabled,phone:u.phone});
 async function newSession(userId:string,familyId?:string){
