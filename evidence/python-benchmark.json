@@ -1,0 +1,6 @@
+{
+  "requests": 400,
+  "elapsedSeconds": 6.350231799995527,
+  "requestsPerSecond": 62.989826607633724,
+  "scope": "in-process TestClient, not production capacity"
+}

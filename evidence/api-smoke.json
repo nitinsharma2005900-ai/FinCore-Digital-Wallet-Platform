@@ -1,0 +1,102 @@
+[
+  {
+    "method": "POST",
+    "path": "/auth/login",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/auth/login",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/wallets",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/wallets",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/auth/reauthenticate",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/beneficiaries",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/beneficiaries",
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "path": "/transfers",
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "path": "/transfers",
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "path": "/payment-intents",
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "path": "/payment-intents/pi_2914aaf57316b40012c2cec7b4447df08198866d/confirm",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/transactions/cd56e880-7f6f-4b5d-b156-c52006e63a29",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/disputes",
+    "status": 201
+  },
+  {
+    "method": "GET",
+    "path": "/statements?walletId=9de8481a-e491-4a40-ba14-5cfd804e4ab4&from=2026-01-01&to=2026-12-31",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/auth/login",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/reconciliation/run",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/auth/login",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/auth/reauthenticate",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/finance/compensations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/finance",
+    "status": 200
+  }
+]
