@@ -1,0 +1,42 @@
+{
+  "repository": "https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform",
+  "checkedAt": "2026-11-25T18:03:02.605Z",
+  "runs": [
+    {
+      "conclusion": "",
+      "databaseId": 45670664104,
+      "name": "Financial quality gates",
+      "status": "in_progress",
+      "url": "https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/actions/runs/45670664104"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 45668899068,
+      "name": "Financial quality gates",
+      "status": "completed",
+      "url": "https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/actions/runs/45668899068"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 45668716250,
+      "name": "Financial quality gates",
+      "status": "completed",
+      "url": "https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/actions/runs/45668716250"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 45667185131,
+      "name": "Financial quality gates",
+      "status": "completed",
+      "url": "https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/actions/runs/45667185131"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 45666631816,
+      "name": "Financial quality gates",
+      "status": "completed",
+      "url": "https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/actions/runs/45666631816"
+    }
+  ],
+  "lookupExitCode": 0
+}

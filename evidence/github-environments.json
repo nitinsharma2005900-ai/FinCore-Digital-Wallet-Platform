@@ -1,0 +1,84 @@
+[
+  {
+    "environment": "staging",
+    "exitCode": 0,
+    "response": {
+      "id": 28551106042,
+      "node_id": "EN_kwDOV767H88AAAAGpcdN-g",
+      "name": "staging",
+      "url": "https://api.github.com/repos/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/environments/staging",
+      "html_url": "https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/deployments/activity_log?environments_filter=staging",
+      "created_at": "2026-11-25T17:52:24Z",
+      "updated_at": "2026-11-25T17:52:24Z",
+      "can_admins_bypass": true,
+      "protection_rules": [
+        {
+          "id": 73999149,
+          "node_id": "GA_kwDOV767H84EaSMt",
+          "type": "branch_policy"
+        }
+      ],
+      "deployment_branch_policy": {
+        "protected_branches": true,
+        "custom_branch_policies": false
+      }
+    }
+  },
+  {
+    "environment": "production",
+    "exitCode": 0,
+    "response": {
+      "id": 28551109658,
+      "node_id": "EN_kwDOV767H88AAAAGpcdcGg",
+      "name": "production",
+      "url": "https://api.github.com/repos/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/environments/production",
+      "html_url": "https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform/deployments/activity_log?environments_filter=production",
+      "created_at": "2026-11-25T17:52:26Z",
+      "updated_at": "2026-11-25T17:52:26Z",
+      "can_admins_bypass": true,
+      "protection_rules": [
+        {
+          "id": 73999155,
+          "node_id": "GA_kwDOV767H84EaSMz",
+          "type": "required_reviewers",
+          "prevent_self_review": true,
+          "reviewers": [
+            {
+              "type": "User",
+              "reviewer": {
+                "login": "nitinsharma2005900-ai",
+                "id": 226306362,
+                "node_id": "U_kgDODX0pOg",
+                "avatar_url": "https://avatars.githubusercontent.com/u/226306362?v=4",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/nitinsharma2005900-ai",
+                "html_url": "https://github.com/nitinsharma2005900-ai",
+                "followers_url": "https://api.github.com/users/nitinsharma2005900-ai/followers",
+                "following_url": "https://api.github.com/users/nitinsharma2005900-ai/following{/other_user}",
+                "gists_url": "https://api.github.com/users/nitinsharma2005900-ai/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/nitinsharma2005900-ai/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/nitinsharma2005900-ai/subscriptions",
+                "organizations_url": "https://api.github.com/users/nitinsharma2005900-ai/orgs",
+                "repos_url": "https://api.github.com/users/nitinsharma2005900-ai/repos",
+                "events_url": "https://api.github.com/users/nitinsharma2005900-ai/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/nitinsharma2005900-ai/received_events",
+                "type": "User",
+                "user_view_type": "public",
+                "site_admin": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 73999156,
+          "node_id": "GA_kwDOV767H84EaSM0",
+          "type": "branch_policy"
+        }
+      ],
+      "deployment_branch_policy": {
+        "protected_branches": true,
+        "custom_branch_policies": false
+      }
+    }
+  }
+]

@@ -1,5 +1,9 @@
 # FinCore
 
+Source repository: https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform
+
+Free sandbox credential instructions: docs/SANDBOX_CREDENTIALS.md. Free hosting evaluation and manual setup: docs/deployment/FREE_HOSTING.md. No Gemini integration or paid service is required.
+
 Educational digital wallet. **Simulation Only – No Real Money.**
 
 Working local educational platform. See `ASSESSMENT_MATRIX.md` for all 15 evidence-based statuses. Local financial flows, staff workspaces, tests, capstone, notification recovery and encrypted restore are verified. External sandbox execution, Docker runtime, hosted GitHub controls and cloud deployment remain explicitly unverified or blocked.
@@ -33,7 +37,7 @@ Prepare financial integration tests with `node scripts/prepare-tests.mjs`, then 
 ## Executed checks
 
 - Python: 8 tests passed; XML tests/coverage and a measured benchmark are in evidence/.
-- Node: 14 API/security, PostgreSQL integrity/concurrency and React component tests passed. The expanded coverage summary records its exact scope in evidence/coverage-summary.json.
+- Node: 18 API/security, PostgreSQL integrity/concurrency, provider-boundary, HTTP-session and React tests passed; Python: 8; native browser: 7; container browser: 6. Reports record exact scopes and timestamps.
 - Browser: 6 actual Chrome tests passed for customer funding/statement/profile, all four staff roles and mobile navigation.
 - Capstone: concurrent spend, duplicate/out-of-order events, failed settlement, mismatch, unbalanced rollback, reversal, immutable records and final balanced journal passed. See evidence/capstone.json.
 - Mailpit outage: BullMQ retries recovered and delivered the notification; evidence/notification-recovery.json.

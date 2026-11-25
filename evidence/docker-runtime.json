@@ -1,7 +1,56 @@
 {
-  "checkedAt": "2026-11-25T17:17:22.524Z",
+  "checkedAt": "2026-11-25T18:01:28.722Z",
   "engine": "Docker Engine in Ubuntu WSL",
   "composeExitCode": 0,
-  "services": [],
-  "verified": false
+  "services": [
+    {
+      "service": "analytics",
+      "state": "running",
+      "health": "healthy",
+      "exitCode": 0
+    },
+    {
+      "service": "api",
+      "state": "running",
+      "health": "healthy",
+      "exitCode": 0
+    },
+    {
+      "service": "mailpit",
+      "state": "running",
+      "health": "healthy",
+      "exitCode": 0
+    },
+    {
+      "service": "migrate",
+      "state": "exited",
+      "health": "",
+      "exitCode": 0
+    },
+    {
+      "service": "postgres",
+      "state": "running",
+      "health": "healthy",
+      "exitCode": 0
+    },
+    {
+      "service": "redis",
+      "state": "running",
+      "health": "healthy",
+      "exitCode": 0
+    },
+    {
+      "service": "web",
+      "state": "running",
+      "health": "healthy",
+      "exitCode": 0
+    },
+    {
+      "service": "worker",
+      "state": "running",
+      "health": "healthy",
+      "exitCode": 0
+    }
+  ],
+  "verified": true
 }

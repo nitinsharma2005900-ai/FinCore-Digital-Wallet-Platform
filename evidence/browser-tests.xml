@@ -1,16 +1,20 @@
-<testsuites id="" name="" tests="6" failures="0" skipped="0" errors="0" time="40.073377">
-<testsuite name="platform.spec.ts" timestamp="2026-11-25T17:13:54.196Z" hostname="" tests="6" failures="0" skipped="0" time="32.795" errors="0">
-<testcase name="customer funding, history, profile and statement controls" classname="platform.spec.ts" time="8.223">
+<testsuites id="" name="" tests="7" failures="0" skipped="0" errors="0" time="49.627786">
+<testsuite name="management.spec.ts" timestamp="2026-11-25T18:00:17.780Z" hostname="" tests="1" failures="0" skipped="0" time="13.067" errors="0">
+<testcase name="customer can discover and release their own reservation" classname="management.spec.ts" time="13.067">
 </testcase>
-<testcase name="support workspace" classname="platform.spec.ts" time="5.69">
+</testsuite>
+<testsuite name="platform.spec.ts" timestamp="2026-11-25T18:00:17.780Z" hostname="" tests="6" failures="0" skipped="0" time="30.934" errors="0">
+<testcase name="customer funding, history, profile and statement controls" classname="platform.spec.ts" time="7.885">
 </testcase>
-<testcase name="operations workspace" classname="platform.spec.ts" time="5.3">
+<testcase name="support workspace" classname="platform.spec.ts" time="6.526">
 </testcase>
-<testcase name="finance workspace" classname="platform.spec.ts" time="4.181">
+<testcase name="operations workspace" classname="platform.spec.ts" time="4.294">
 </testcase>
-<testcase name="admin workspace" classname="platform.spec.ts" time="5.381">
+<testcase name="finance workspace" classname="platform.spec.ts" time="3.829">
 </testcase>
-<testcase name="mobile navigation and visible simulation notice" classname="platform.spec.ts" time="4.02">
+<testcase name="admin workspace" classname="platform.spec.ts" time="4.119">
+</testcase>
+<testcase name="mobile navigation and visible simulation notice" classname="platform.spec.ts" time="4.281">
 </testcase>
 </testsuite>
 </testsuites>

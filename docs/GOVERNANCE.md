@@ -14,6 +14,6 @@ git push -u origin main
 git push origin --tags
 ```
 
-Do not paste access tokens into remote URLs. GitHub CLI authentication is available locally, but no submission repository was named and no new remote repository has been created. No cloud deployment, hosted CI run, protected-branch configuration or independent review is claimed by this package.
+Do not paste access tokens into remote URLs. The repository is now published at https://github.com/nitinsharma2005900-ai/FinCore-Digital-Wallet-Platform and was made public with explicit user authorization. Genuine hosted runs are recorded in evidence/github-status.json; initial failures and corrections are documented under docs/incidents/. Branch protection setup responses are saved in evidence/github-protection-response.json. No independent review, successful overall security pipeline or cloud deployment is fabricated.
 
 CI definitions execute lint, type checks, Node/Python/real-PostgreSQL tests, component/browser tests, builds, dependency and secret scanning, image scanning, versioned artifacts and provenance attestation. Deployment promotes a reviewed commit through configured environment gates. Local evidence is distinct from hosted CI evidence; credentials/host settings are still required for actual execution.

@@ -5,6 +5,7 @@ Docker Engine 29.1.3 and Compose 2.40.3 were installed into the existing Ubuntu 
 ```powershell
 wsl -d Ubuntu -u root -- docker info
 wsl -d Ubuntu -u root -- service docker start
+.\scripts\Start-Docker.ps1
 ```
 
 An isolated Compose validation project preserves the native stack and uses separate PostgreSQL/Redis volumes and ports 3100 (web), 4101 (API), 8101 (analytics), 8125 (Mailpit). From PowerShell:
@@ -15,3 +16,5 @@ node scripts/docker-evidence.mjs
 ```
 
 Use evidence/docker-runtime.json to distinguish an installed engine and validated Compose configuration from successfully built, healthy application containers. Installation alone is not proof of assessment completion. The original native services remain at ports 3000/4001/8001.
+
+Start-Docker.ps1 starts a hidden event monitor because this WSL instance can otherwise idle-shut down between detached CLI calls. Its logs and PID are in ignored .runtime. Published UI/analytics/Mailpit services join the edge network as well as the private service network; PostgreSQL and Redis remain private and have no host-port mappings.

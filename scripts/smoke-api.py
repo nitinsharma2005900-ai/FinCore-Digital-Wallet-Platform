@@ -9,7 +9,7 @@ evidence=[]
 def call(c,method,path,body=None,headers=None):
     r=c.request(method,base+path,json=body,headers=headers)
     assert r.is_success,(path,r.status_code,r.text)
-    evidence.append({'method':method,'path':path,'status':r.status_code})
+    evidence.append({'baseUrl':base,'method':method,'path':path,'status':r.status_code})
     return r.json()['data']
 def login(email):
     c=httpx.Client(timeout=15)

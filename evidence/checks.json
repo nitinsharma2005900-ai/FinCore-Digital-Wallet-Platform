@@ -1,24 +1,10 @@
 [
   {
-    "name": "typecheck",
-    "exitCode": 0,
-    "passed": true,
-    "elapsedSeconds": 20.381,
-    "completedAt": "2026-11-25T17:15:01.965Z"
-  },
-  {
     "name": "test",
     "exitCode": 0,
     "passed": true,
     "elapsedSeconds": 40.921,
     "completedAt": "2026-11-25T17:15:42.888Z"
-  },
-  {
-    "name": "build",
-    "exitCode": 0,
-    "passed": true,
-    "elapsedSeconds": 41.482,
-    "completedAt": "2026-11-25T17:16:24.373Z"
   },
   {
     "name": "docs",
@@ -31,7 +17,21 @@
     "name": "lint",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 8.654,
-    "completedAt": "2026-11-25T17:25:18.304Z"
+    "elapsedSeconds": 5.373,
+    "completedAt": "2026-11-25T18:01:12.377Z"
+  },
+  {
+    "name": "typecheck",
+    "exitCode": 0,
+    "passed": true,
+    "elapsedSeconds": 17.94,
+    "completedAt": "2026-11-25T18:01:30.319Z"
+  },
+  {
+    "name": "build",
+    "exitCode": 0,
+    "passed": true,
+    "elapsedSeconds": 28.93,
+    "completedAt": "2026-11-25T18:01:59.249Z"
   }
 ]
