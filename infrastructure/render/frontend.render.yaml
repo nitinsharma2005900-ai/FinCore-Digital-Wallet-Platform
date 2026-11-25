@@ -1,0 +1,18 @@
+# Optional free FRONTEND ONLY. The full backend/worker/database must run elsewhere.
+services:
+  - type: web
+    name: fincore-frontend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./infrastructure/docker/Node.Dockerfile
+    dockerContext: .
+    dockerCommand: npm run start -w @fincore/web
+    healthCheckPath: /
+    autoDeployTrigger: off
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        sync: false
+      - key: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="540" height="340" preserveAspectRatio="xMinYMin meet" viewBox="0 0 540 340" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="540" height="340"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-340)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="16" y="318" style="font-family: Times-Roman; font-size: 16px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,636) scale(1,-1)">Financial entity relationships</text>
+			<rect x="20" y="240" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="28" y="257" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,514) scale(1,-1)">User / Session</text>
+			<rect x="190" y="240" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="198" y="257" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,514) scale(1,-1)">Wallet / Account</text>
+			<rect x="360" y="240" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="368" y="257" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,514) scale(1,-1)">PaymentIntent</text>
+			<rect x="20" y="160" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="28" y="177" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,354) scale(1,-1)">Transaction</text>
+			<rect x="190" y="160" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="198" y="177" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,354) scale(1,-1)">LedgerEntry / Hold</text>
+			<rect x="360" y="160" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="368" y="177" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,354) scale(1,-1)">ProviderEvent / Settlement</text>
+			<rect x="20" y="80" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="28" y="97" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,194) scale(1,-1)">Refund / ExternalRefund</text>
+			<rect x="190" y="80" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="198" y="97" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,194) scale(1,-1)">Dispute / RiskAlert</text>
+			<rect x="360" y="80" width="148" height="44" rx="7" ry="0" style="stroke: rgb(3%,49%,40%); stroke-linecap: butt; stroke-width: 1; fill: rgb(89%,95%,92%); fill-rule: evenodd;"/>
+			<text x="368" y="97" style="font-family: Times-Roman; font-size: 10px;fill: rgb(6%,16%,25%); stroke:none;" transform="translate(0,194) scale(1,-1)">Audit / Notification</text>
+			<path d="M 168,262 L 190,262 Z" style="stroke: rgb(27%,40%,50%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="190 262, 186 269, 194 269" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(27%,40%,50%); fill-rule: evenodd;"/>
+			<path d="M 264,240 L 264,204 Z" style="stroke: rgb(27%,40%,50%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="264 204, 260 211, 268 211" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(27%,40%,50%); fill-rule: evenodd;"/>
+			<path d="M 168,182 L 190,182 Z" style="stroke: rgb(27%,40%,50%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="190 182, 186 189, 194 189" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(27%,40%,50%); fill-rule: evenodd;"/>
+			<path d="M 434,240 L 434,204 Z" style="stroke: rgb(27%,40%,50%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="434 204, 430 211, 438 211" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(27%,40%,50%); fill-rule: evenodd;"/>
+			<path d="M 94,160 L 94,124 Z" style="stroke: rgb(27%,40%,50%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="94 124, 90 131, 98 131" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(27%,40%,50%); fill-rule: evenodd;"/>
+			<path d="M 94,240 L 264,124 Z" style="stroke: rgb(27%,40%,50%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="264 124, 260 131, 268 131" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(27%,40%,50%); fill-rule: evenodd;"/>
+			<path d="M 94,240 L 434,124 Z" style="stroke: rgb(27%,40%,50%); stroke-linecap: butt; stroke-width: 1;"/>
+			<polygon points="434 124, 430 131, 438 131" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(27%,40%,50%); fill-rule: evenodd;"/>
+			<text x="16" y="8" style="font-family: Times-Roman; font-size: 9px;fill: rgb(27%,40%,50%); stroke:none;" transform="translate(0,16) scale(1,-1)">FinCore | Synthetic educational data | Simulation Only</text>
+		</g>
+	</g>
+</svg>

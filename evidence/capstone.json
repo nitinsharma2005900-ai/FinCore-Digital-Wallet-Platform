@@ -17,14 +17,14 @@
   "integrity": {
     "balanced": true,
     "invalidTransactions": [],
-    "debits": "50694.68",
-    "credits": "50694.68",
-    "entries": 26
+    "debits": "50999.68",
+    "credits": "50999.68",
+    "entries": 42
   },
   "immutable": true,
   "timeline": [
     {
-      "at": "2026-11-25T16:48:38.725Z",
+      "at": "2026-11-25T17:16:55.068Z",
       "incident": "concurrent-transfers",
       "data": {
         "fulfilled": 1,
@@ -42,7 +42,7 @@
       }
     },
     {
-      "at": "2026-11-25T16:48:38.820Z",
+      "at": "2026-11-25T17:16:55.339Z",
       "incident": "duplicate-payment-events",
       "data": {
         "duplicate": true,
@@ -55,14 +55,14 @@
       }
     },
     {
-      "at": "2026-11-25T16:48:38.838Z",
+      "at": "2026-11-25T17:16:55.382Z",
       "incident": "failed-settlement",
       "data": {
         "credited": false
       }
     },
     {
-      "at": "2026-11-25T16:48:38.850Z",
+      "at": "2026-11-25T17:16:55.417Z",
       "incident": "mismatched-provider-settlement",
       "data": {
         "duplicate": false,
@@ -70,15 +70,15 @@
       }
     },
     {
-      "at": "2026-11-25T16:48:38.870Z",
+      "at": "2026-11-25T17:16:55.480Z",
       "incident": "financial-reversal",
       "data": {
-        "original": "f5c83f6d-e268-45e4-9ab4-48a3722496df",
-        "compensation": "6a957803-5133-47ad-aa6e-e5595b3ad8ba"
+        "original": "144bf6db-64fc-420a-9193-4a5543827e10",
+        "compensation": "cc5e6268-ff67-4a82-9eb5-aaaa0cddcaf5"
       }
     },
     {
-      "at": "2026-11-25T16:48:38.887Z",
+      "at": "2026-11-25T17:16:55.551Z",
       "incident": "unbalanced-journal",
       "data": {
         "rejected": true,
@@ -86,7 +86,7 @@
       }
     },
     {
-      "at": "2026-11-25T16:48:38.960Z",
+      "at": "2026-11-25T17:16:57.602Z",
       "incident": "dependency-timeout",
       "data": {
         "safeFailure": true,
@@ -99,7 +99,7 @@
       }
     },
     {
-      "at": "2026-11-25T16:48:38.978Z",
+      "at": "2026-11-25T17:16:57.942Z",
       "incident": "suspicious-activity",
       "data": {
         "score": 100,

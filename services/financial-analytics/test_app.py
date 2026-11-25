@@ -20,7 +20,7 @@ def test_half_even_boundaries():
 
 def test_fee_cap_and_validation():
     assert post('/fees', {'amount': '100000', 'rate': '0.01'}).json()['fee'] == '50.00'
-    for amount in ['-1', 'NaN', 'Infinity', 1.2]:
+    for amount in ['-1', 'NaN', 'Infinity', 'not-money', '', 1.2]:
         assert post('/fees', {'amount': amount}).status_code == 422
     assert post('/fees', {'amount': '1', 'minimum': '10', 'maximum': '5'}).status_code == 422
 

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-25T17:07:46.551Z",
+  "checkedAt": "2026-11-25T17:16:39.101Z",
   "services": {
     "web": {
       "url": "http://127.0.0.1:3000",
@@ -38,7 +38,8 @@
     }
   },
   "docker": {
-    "available": false,
-    "reason": "Docker executable not installed"
+    "available": true,
+    "transport": "WSL Ubuntu",
+    "reason": "Engine available"
   }
 }

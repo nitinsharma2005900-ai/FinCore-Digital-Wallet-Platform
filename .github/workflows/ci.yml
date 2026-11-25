@@ -39,6 +39,8 @@ jobs:
       - run: pip install -r services/financial-analytics/requirements.txt
       - run: psql "$MIGRATION_DATABASE_URL" -c "CREATE ROLE fincore_app LOGIN PASSWORD 'ci_app_password'"
       - run: npm run db:generate && npm run db:migrate && npm run db:seed
+      - run: python -m uvicorn app:app --app-dir services/financial-analytics --port 8000 > evidence/analytics-ci.txt 2>&1 &
+      - run: node scripts/wait-for-services.mjs http://127.0.0.1:8000/health
       - run: npm run lint && npm run typecheck && npm test
       - run: python -m pytest services/financial-analytics --junitxml=evidence/python-tests.xml
       - run: npm run build && npm run docs
@@ -47,7 +49,7 @@ jobs:
       - uses: gitleaks/gitleaks-action@v2
         env: {GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'}
       - run: npx playwright install --with-deps chromium
-      - run: node --import tsx apps/api/src/server.ts & python -m uvicorn app:app --app-dir services/financial-analytics --port 8000 & npm run dev:web & node scripts/wait-for-services.mjs && npm run test:e2e
+      - run: node --import tsx apps/api/src/server.ts & npm run dev:web & node scripts/wait-for-services.mjs && npm run test:e2e
       - uses: actions/upload-artifact@v4
         if: always()
         with: {name: 'fincore-evidence-${{ github.sha }}', path: 'evidence/'}

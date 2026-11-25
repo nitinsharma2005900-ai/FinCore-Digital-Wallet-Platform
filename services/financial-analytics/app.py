@@ -1,7 +1,7 @@
 """Stateless Decimal calculations and transparent risk rules; Express owns all records."""
 import hmac
 import os
-from decimal import Decimal, ROUND_HALF_EVEN
+from decimal import Decimal, ROUND_HALF_EVEN, InvalidOperation
 from typing import Annotated, Literal
 from fastapi import FastAPI, Header, HTTPException, Depends
 from pydantic import BaseModel, Field, BeforeValidator
@@ -9,7 +9,10 @@ from pydantic import BaseModel, Field, BeforeValidator
 def exact(value):
     if not isinstance(value, str):
         raise ValueError('Decimal inputs must be JSON strings')
-    result = Decimal(value)
+    try:
+        result = Decimal(value)
+    except InvalidOperation as exc:
+        raise ValueError('Must be a valid decimal string') from exc
     if not result.is_finite():
         raise ValueError('Must be finite')
     return result

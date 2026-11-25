@@ -52,7 +52,7 @@ Every posted transaction has exactly two equal entries. Deferred database trigge
 
 Local payment simulation is separate from Stripe. Stripe test intent creation, Stripe.js checkout, signed webhook handling and durable full-refund orchestration are implemented but unverified with external credentials. Mailpit email delivery and BullMQ retries are locally verified. Twilio test credentials/magic numbers validate sandbox requests without sending real SMS; external execution requires test credentials. Simulated MFA codes are displayed only outside production; production activation is blocked pending secure delivery.
 
-Docker is absent on this machine. No cloud deployment or GitHub publication has occurred. The authenticated GitHub account is not a designated submission repository. Select a repository before publishing.
+Docker Engine and Compose are installed in Ubuntu WSL; see docs/deployment/WSL_DOCKER.md and evidence/docker-runtime.json for actual execution status. GitHub publication and free hosting preparation are tracked separately from local verification.
 
 ## Submission and repeatable demonstrations
 

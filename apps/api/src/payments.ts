@@ -47,7 +47,7 @@ payments.post('/',async(req,res)=>{
  // operation is retried without the provider's own idempotency support.
  const id=createIntentId(req.actor!.id,key);
  const existing=await db.paymentIntent.findUnique({where:{id}});
- if(existing){if(existing.walletId!==body.walletId||!new Decimal(existing.amount.toString()).eq(amount))fail(409,'IDEMPOTENCY_CONFLICT','Funding key reused with a different payload');return send(res,existing);}
+ if(existing){if(existing.walletId!==body.walletId||!new Decimal(existing.amount.toString()).eq(amount))fail(409,'IDEMPOTENCY_CONFLICT','Funding key reused with a different payload');const clientSecret=existing.provider==='stripe'&&stripe?(await controlledProvider(()=>stripe!.paymentIntents.retrieve(existing.providerId))).client_secret:undefined;return send(res,{...existing,...(clientSecret?{clientSecret}:{})});}
  const provider=await controlledProvider(()=>paymentProvider.create(amount,id));
  let intent;
  try{intent=await db.paymentIntent.create({data:{id,userId:req.actor!.id,walletId:body.walletId,amount,provider:paymentProvider.name,providerId:provider.id}});}

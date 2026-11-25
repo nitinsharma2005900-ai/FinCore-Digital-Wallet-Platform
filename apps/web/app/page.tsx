@@ -1,8 +1,9 @@
 'use client';
-import {useState,useEffect,FormEvent} from 'react';
+import {useState,useEffect,useRef,FormEvent} from 'react';
 import {QueryClient,QueryClientProvider,useQuery,useQueryClient} from '@tanstack/react-query';
 import {AreaChart,Area,XAxis,Tooltip,ResponsiveContainer} from 'recharts';
 import {StripePayment} from './stripe-payment';
+import {createHttpClient} from './http';
 import {Records} from './records';
 import {Workspace,DataTable} from './workspace';
 import {Wallet,ShieldCheck,Sun,LogOut} from 'lucide-react';
@@ -12,8 +13,11 @@ export default function Page(){return <QueryClientProvider client={client}><App/
 function App(){
  const [token,setToken]=useState(''),[user,setUser]=useState<any>(null),[view,setView]=useState('Overview'),[error,setError]=useState(''),[success,setSuccess]=useState(''),[busy,setBusy]=useState(false),[register,setRegister]=useState(false),[mfa,setMfa]=useState<any>(null),[dark,setDark]=useState(false),[collapsed,setCollapsed]=useState(false),[stripeIntent,setStripeIntent]=useState<any>(null);
  const cache=useQueryClient();
- async function api(path:string,method='GET',body?:any,extra:Record<string,string>={}){const r=await fetch(base+path,{method,credentials:'include',headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{}),...extra},...(body?{body:JSON.stringify(body)}:{})});const data=await r.json();if(!r.ok)throw Error(data.error?.message||'Request failed');return data.data;}
- useEffect(()=>{fetch(base+'/auth/refresh',{method:'POST',credentials:'include'}).then(r=>r.json()).then(r=>{if(r.data){setToken(r.data.accessToken);setUser(r.data.user);}}).catch(()=>{});},[]);
+ const httpRef=useRef<ReturnType<typeof createHttpClient>|null>(null);
+ if(!httpRef.current)httpRef.current=createHttpClient(base,token,s=>{setToken(s.accessToken);setUser(s.user);});
+ httpRef.current.setToken(token);
+ const api=httpRef.current.data;
+ useEffect(()=>{void httpRef.current!.refresh().catch(()=>{});},[]);
  const dashboard=useQuery({queryKey:['dashboard',token],queryFn:()=>api('/dashboard'),enabled:!!token,retry:false});
  const paths:Record<string,string>={Wallets:'/wallets',Accounts:'/accounts',Beneficiaries:'/beneficiaries',Transfer:'/beneficiaries',Funding:'/payment-intents',Transactions:'/transactions',Disputes:'/disputes',Notifications:'/notifications',Security:'/sessions',Refunds:'/refunds'};
  const records=useQuery({queryKey:['records',view,token],queryFn:()=>api(paths[view]),enabled:!!token&&!!paths[view],retry:false});
@@ -39,7 +43,7 @@ function App(){
  });}}>{['Wallets','Accounts'].includes(view)&&<label>Name<input name="name" required minLength={2}/></label>}{view==='Beneficiaries'&&<label>Recipient email<input name="email" type="email" required placeholder="recipient@fincore.test"/></label>}{['Transfer','Funding'].includes(view)&&<><label>From wallet<select name="walletId" required>{wallets.map((w:any)=><option key={w.id} value={w.id}>{w.name} · {inr(w.available)}</option>)}</select></label><label>Amount (INR)<input name="amount" inputMode="decimal" required pattern="[0-9]+(\.[0-9]{1,2})?"/></label></>}{view==='Transfer'&&<><label>Beneficiary<select name="beneficiaryId" required><option value="">Choose a recipient</option>{records.data?.map((b:any)=><option key={b.id} value={b.id}>{b.name}</option>)}</select></label><label>Payment note<input name="description" required maxLength={200}/></label><p className="muted">Submitting confirms this transfer. Internal simulated transfers have no fee.</p></>}{view==='Funding'&&<label>Simulated outcome<select name="outcome"><option value="success">Successful settlement</option><option value="failed">Failed settlement</option></select></label>}{view==='Disputes'&&<><label>Transaction ID<input name="transactionId" required/></label><label>Reason<input name="reason" required minLength={10}/></label></>}{view==='Security'&&<label>Simulated MFA<select name="mfa"><option value="true">Enabled</option><option value="false">Disabled</option></select></label>}{['Beneficiaries','Transfer','Security'].includes(view)&&<label>Confirm your password<input name="password" type="password" required autoComplete="current-password"/></label>}<button disabled={busy}>{busy?'Processing…':'Confirm'}</button></form></div>}
  {view==='Funding'&&stripeIntent?.clientSecret&&<StripePayment clientSecret={stripeIntent.clientSecret} onComplete={()=>{setSuccess('Test payment confirmed. Awaiting signed webhook settlement.');void cache.invalidateQueries();}}/>}
  {view==='Statements'&&<div className="card form"><h3>Download a statement</h3><form onSubmit={e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.currentTarget)) as Record<string,string>;void action(async()=>{const r=await fetch(base+'/statements?'+new URLSearchParams(f),{headers:{Authorization:'Bearer '+token}});if(!r.ok)throw Error('Statement could not be generated');const url=URL.createObjectURL(await r.blob());const a=document.createElement('a');a.href=url;a.download='FinCore-statement.'+f.format;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});}}><label>Wallet<select name="walletId">{wallets.map((w:any)=><option key={w.id} value={w.id}>{w.name}</option>)}</select></label><label>From<input type="date" name="from" required defaultValue={new Date(new Date().getFullYear(),new Date().getMonth(),1).toLocaleDateString('en-CA')}/></label><label>To<input type="date" name="to" required defaultValue={new Date().toLocaleDateString('en-CA')}/></label><label>Format<select name="format"><option value="pdf">PDF</option><option value="csv">CSV</option></select></label><button disabled={busy}>Download statement</button></form></div>}
- {['Transactions','Notifications','Disputes'].includes(view)&&<Records view={view} token={token} api={api} base={base}/>}
+ {['Transactions','Notifications','Disputes'].includes(view)&&<Records view={view} token={token} api={api} envelope={httpRef.current.envelope} base={base}/>}
  {paths[view]&&!['Transfer','Transactions','Notifications','Disputes'].includes(view)&&<div className="card"><h3>{view==='Security'?'Active sessions':view}</h3>{records.isLoading?<p>Loading…</p>:records.error?<p className="error">{records.error.message}</p>:<Table rows={records.data||[]}/>}</div>}
  {wallet&&view==='Wallets'&&<p className="muted">Share your wallet ID with another synthetic customer to receive transfers.</p>}
  </main></div>;

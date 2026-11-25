@@ -3,35 +3,35 @@
     "name": "typecheck",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 10.864,
-    "completedAt": "2026-11-25T17:04:47.337Z"
+    "elapsedSeconds": 20.381,
+    "completedAt": "2026-11-25T17:15:01.965Z"
   },
   {
     "name": "test",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 21.549,
-    "completedAt": "2026-11-25T17:05:08.886Z"
+    "elapsedSeconds": 40.921,
+    "completedAt": "2026-11-25T17:15:42.888Z"
   },
   {
     "name": "build",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 17.879,
-    "completedAt": "2026-11-25T17:05:26.766Z"
+    "elapsedSeconds": 41.482,
+    "completedAt": "2026-11-25T17:16:24.373Z"
   },
   {
     "name": "docs",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 1.132,
-    "completedAt": "2026-11-25T17:05:27.898Z"
+    "elapsedSeconds": 8.106,
+    "completedAt": "2026-11-25T17:16:32.484Z"
   },
   {
     "name": "lint",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 3.591,
-    "completedAt": "2026-11-25T17:06:28.673Z"
+    "elapsedSeconds": 8.654,
+    "completedAt": "2026-11-25T17:25:18.304Z"
   }
 ]

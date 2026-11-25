@@ -1,22 +1,22 @@
 {
   "encryption": "AES-256-GCM; scrypt-derived key; fresh salt and nonce",
   "before": {
-    "transactions": 16,
-    "entries": 32,
-    "debits": "50709.68",
-    "credits": "50709.68",
+    "transactions": 21,
+    "entries": 42,
+    "debits": "50999.68",
+    "credits": "50999.68",
     "unbalanced": 0
   },
   "after": {
-    "transactions": 16,
-    "entries": 32,
-    "debits": "50709.68",
-    "credits": "50709.68",
+    "transactions": 21,
+    "entries": 42,
+    "debits": "50999.68",
+    "credits": "50999.68",
     "unbalanced": 0
   },
   "verified": true,
-  "elapsedSeconds": 6.2610471999505535,
-  "backupPath": ".runtime\\backups\\fincore-29605ac400b64a3aae2103fdc79d66f6.enc",
+  "elapsedSeconds": 12.117958100046962,
+  "backupPath": ".runtime\\backups\\fincore-5db00d0490c142c2abb4efd7ad8d177f.enc",
   "restoredDatabaseDropped": true,
   "scope": "Synthetic local PostgreSQL database. Not a cloud backup or disaster recovery SLA."
 }

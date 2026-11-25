@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-25T17:13:51.701Z",
+  "paymentProvider": "local",
+  "stripe": {
+    "configured": false,
+    "externallyVerified": false,
+    "requiredVariables": [
+      "STRIPE_SECRET_KEY",
+      "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+      "STRIPE_WEBHOOK_SECRET"
+    ]
+  },
+  "email": {
+    "provider": "mailpit",
+    "externalCredentialsRequired": false
+  },
+  "sms": {
+    "provider": "local",
+    "testCredentialsConfigured": false,
+    "externallyVerified": false
+  },
+  "gemini": {
+    "used": false,
+    "required": false
+  },
+  "instructions": "docs/SANDBOX_CREDENTIALS.md"
+}
