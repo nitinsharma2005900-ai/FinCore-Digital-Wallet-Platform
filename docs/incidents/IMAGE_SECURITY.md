@@ -7,3 +7,5 @@ Application npm and Python scans passed, but the image scan correctly found addi
 The other findings in that captured report did not list fixed package versions. They have not been ignored or represented as resolved. The image gate remains exit-code 1 for HIGH/CRITICAL findings. A new build and scan are required to establish the remaining count after the upgrade; production deployment remains blocked until this gate is reviewed and passes. No false VEX assertion or blanket ignore file was added to turn the pipeline green.
 
 The hosted verify job separately passed lint, type checks, PostgreSQL/API/component tests, Python tests, application builds, dependency scans, full-history secret scanning and browser tests. That does not make the overall workflow successful while its image job fails.
+
+Update: run 45668899068 scanned the upgraded image. The captured current report has 55 OS findings, zero findings with a fixed package version listed, and no Node dependency findings. The libzstd fix is no longer among the fixable findings. The strict image gate remains failed; this update does not assert that the remaining advisories are harmless.
