@@ -1,20 +1,64 @@
-<testsuites id="" name="" tests="7" failures="0" skipped="0" errors="0" time="49.627786">
-<testsuite name="management.spec.ts" timestamp="2026-11-25T18:00:17.780Z" hostname="" tests="1" failures="0" skipped="0" time="13.067" errors="0">
-<testcase name="customer can discover and release their own reservation" classname="management.spec.ts" time="13.067">
+<testsuites id="" name="" tests="14" failures="0" skipped="0" errors="0" time="113.812962">
+<testsuite name="full-workflows.spec.ts" timestamp="2026-11-25T18:35:49.212Z" hostname="" tests="7" failures="0" skipped="0" time="74.867" errors="0">
+<testcase name="customer registration, wallet/account creation, funding, transfers, exports and disputes" classname="full-workflows.spec.ts" time="24.217">
+<properties>
+<property name="serial" value="">
+</property>
+</properties>
+</testcase>
+<testcase name="wallet freeze/unfreeze, simulated MFA, password change and session revocation" classname="full-workflows.spec.ts" time="13.816">
+<properties>
+<property name="serial" value="">
+</property>
+</properties>
+</testcase>
+<testcase name="support resolves the actual customer dispute" classname="full-workflows.spec.ts" time="3.504">
+<properties>
+<property name="serial" value="">
+</property>
+</properties>
+</testcase>
+<testcase name="operations resolves a generated risk alert and runs reconciliation" classname="full-workflows.spec.ts" time="3.716">
+<properties>
+<property name="serial" value="">
+</property>
+</properties>
+</testcase>
+<testcase name="finance reverses a real stored synthetic transfer and verifies the journal" classname="full-workflows.spec.ts" time="4.883">
+<properties>
+<property name="serial" value="">
+</property>
+</properties>
+</testcase>
+<testcase name="admin updates only the disposable customer and verifies settings, audit and system pages" classname="full-workflows.spec.ts" time="5.848">
+<properties>
+<property name="serial" value="">
+</property>
+</properties>
+</testcase>
+<testcase name="remaining management, discrepancy, refund and failed notification recovery actions" classname="full-workflows.spec.ts" time="18.883">
+<properties>
+<property name="serial" value="">
+</property>
+</properties>
 </testcase>
 </testsuite>
-<testsuite name="platform.spec.ts" timestamp="2026-11-25T18:00:17.780Z" hostname="" tests="6" failures="0" skipped="0" time="30.934" errors="0">
-<testcase name="customer funding, history, profile and statement controls" classname="platform.spec.ts" time="7.885">
+<testsuite name="management.spec.ts" timestamp="2026-11-25T18:35:49.212Z" hostname="" tests="1" failures="0" skipped="0" time="5.534" errors="0">
+<testcase name="customer can discover and release their own reservation" classname="management.spec.ts" time="5.534">
 </testcase>
-<testcase name="support workspace" classname="platform.spec.ts" time="6.526">
+</testsuite>
+<testsuite name="platform.spec.ts" timestamp="2026-11-25T18:35:49.212Z" hostname="" tests="6" failures="0" skipped="0" time="21.041" errors="0">
+<testcase name="customer funding, history, profile and statement controls" classname="platform.spec.ts" time="4.36">
 </testcase>
-<testcase name="operations workspace" classname="platform.spec.ts" time="4.294">
+<testcase name="support workspace" classname="platform.spec.ts" time="2.941">
 </testcase>
-<testcase name="finance workspace" classname="platform.spec.ts" time="3.829">
+<testcase name="operations workspace" classname="platform.spec.ts" time="3.056">
 </testcase>
-<testcase name="admin workspace" classname="platform.spec.ts" time="4.119">
+<testcase name="finance workspace" classname="platform.spec.ts" time="3.308">
 </testcase>
-<testcase name="mobile navigation and visible simulation notice" classname="platform.spec.ts" time="4.281">
+<testcase name="admin workspace" classname="platform.spec.ts" time="3.459">
+</testcase>
+<testcase name="mobile navigation and visible simulation notice" classname="platform.spec.ts" time="3.917">
 </testcase>
 </testsuite>
 </testsuites>

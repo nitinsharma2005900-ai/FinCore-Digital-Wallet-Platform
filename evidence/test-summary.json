@@ -1,23 +1,27 @@
 {
   "suites": {
     "node": {
-      "tests": 18,
+      "tests": 19,
       "failures": 0,
+      "skipped": 0,
       "verified": true
     },
     "python": {
       "tests": 8,
       "failures": 0,
+      "skipped": 0,
       "verified": true
     },
     "browser": {
-      "tests": 7,
+      "tests": 14,
       "failures": 0,
+      "skipped": 0,
       "verified": true
     },
     "containerBrowser": {
       "tests": 6,
       "failures": 0,
+      "skipped": 0,
       "verified": true
     }
   },
@@ -40,22 +44,22 @@
       "name": "lint",
       "exitCode": 0,
       "passed": true,
-      "elapsedSeconds": 5.373,
-      "completedAt": "2026-11-25T18:01:12.377Z"
+      "elapsedSeconds": 6.709,
+      "completedAt": "2026-11-25T18:38:00.270Z"
     },
     {
       "name": "typecheck",
       "exitCode": 0,
       "passed": true,
-      "elapsedSeconds": 17.94,
-      "completedAt": "2026-11-25T18:01:30.319Z"
+      "elapsedSeconds": 15.145,
+      "completedAt": "2026-11-25T18:38:15.418Z"
     },
     {
       "name": "build",
       "exitCode": 0,
       "passed": true,
-      "elapsedSeconds": 28.93,
-      "completedAt": "2026-11-25T18:01:59.249Z"
+      "elapsedSeconds": 28.138,
+      "completedAt": "2026-11-25T18:38:43.556Z"
     }
   ],
   "coverage": {
@@ -66,22 +70,22 @@
       "pct": 79.48
     },
     "statements": {
-      "total": 878,
-      "covered": 559,
+      "total": 879,
+      "covered": 561,
       "skipped": 0,
-      "pct": 63.66
+      "pct": 63.82
     },
     "functions": {
-      "total": 182,
-      "covered": 100,
+      "total": 183,
+      "covered": 101,
       "skipped": 0,
-      "pct": 54.94
+      "pct": 55.19
     },
     "branches": {
-      "total": 504,
-      "covered": 253,
+      "total": 505,
+      "covered": 256,
       "skipped": 0,
-      "pct": 50.19
+      "pct": 50.69
     },
     "branchesTrue": {
       "total": 0,

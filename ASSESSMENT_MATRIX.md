@@ -4,7 +4,7 @@ Local verification is distinct from external/cloud execution. No hosted results 
 
 | # | Requirement | Implementation file | Test file | Test result | Evidence path | Completion status | Remaining limitation |
 |---|---|---|---|---|---|---|---|
-| 01 | Responsive customer/staff workflows connected to stored financial records | apps/web/app/page.tsx; apps/web/app/workspace.tsx; apps/web/app/records.tsx | tests/e2e/platform.spec.ts; tests/frontend/table.test.tsx | Verified local results below | evidence/browser-tests.xml; evidence/customer-browser.png | COMPLETE AND VERIFIED | Workspaces share a Next.js route. Staff lists are bounded to 100 records. |
+| 01 | Responsive customer/staff workflows connected to stored financial records | apps/web/app/page.tsx; apps/web/app/workspace.tsx; apps/web/app/records.tsx | tests/e2e/full-workflows.spec.ts; tests/e2e/platform.spec.ts; tests/e2e/management.spec.ts; tests/frontend/table.test.tsx | Verified local results below | evidence/browser-tests.xml; evidence/customer-browser.png | COMPLETE AND VERIFIED | Workspaces share a Next.js route. Staff lists are bounded to 100 records. |
 | 02 | Validated versioned APIs, safe errors, ownership and pagination | apps/api/src/app.ts; apps/api/src/customer.ts; apps/api/src/staff.ts | tests/integration/platform.test.ts | Verified local results below | evidence/node-tests.xml | COMPLETE AND VERIFIED | Staff lists capped at 100; reconciliation processes the newest 1000 intents per run. |
 | 03 | Exact precision, immutable entries, balanced posting, holds and constraints | database/migrations/001_foundation.sql; apps/api/src/ledger.ts | tests/integration/ledger.test.ts; scripts/capstone.ts | Verified local results below | evidence/capstone.json; evidence/node-tests.xml | COMPLETE AND VERIFIED | INR only; one full compensation per original transaction. Privileged migrator credentials must remain separate. |
 | 04 | Bcrypt, JWT, refresh rotation/replay revocation, simulated MFA, RBAC and reauthentication | apps/api/src/auth.ts; apps/api/src/customer.ts | tests/integration/platform.test.ts | Verified local results below | evidence/node-tests.xml | COMPLETE AND VERIFIED | MFA is explicitly simulated locally; production activation is blocked without secure delivery. |
@@ -24,23 +24,27 @@ Local verification is distinct from external/cloud execution. No hosted results 
 
 {
   "node": {
-    "tests": 18,
+    "tests": 19,
     "failures": 0,
+    "skipped": 0,
     "verified": true
   },
   "python": {
     "tests": 8,
     "failures": 0,
+    "skipped": 0,
     "verified": true
   },
   "browser": {
-    "tests": 7,
+    "tests": 14,
     "failures": 0,
+    "skipped": 0,
     "verified": true
   },
   "containerBrowser": {
     "tests": 6,
     "failures": 0,
+    "skipped": 0,
     "verified": true
   }
 }
@@ -64,22 +68,22 @@ Local verification is distinct from external/cloud execution. No hosted results 
     "name": "lint",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 5.373,
-    "completedAt": "2026-11-25T18:01:12.377Z"
+    "elapsedSeconds": 6.709,
+    "completedAt": "2026-11-25T18:38:00.270Z"
   },
   {
     "name": "typecheck",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 17.94,
-    "completedAt": "2026-11-25T18:01:30.319Z"
+    "elapsedSeconds": 15.145,
+    "completedAt": "2026-11-25T18:38:15.418Z"
   },
   {
     "name": "build",
     "exitCode": 0,
     "passed": true,
-    "elapsedSeconds": 28.93,
-    "completedAt": "2026-11-25T18:01:59.249Z"
+    "elapsedSeconds": 28.138,
+    "completedAt": "2026-11-25T18:38:43.556Z"
   }
 ]
 
@@ -93,22 +97,22 @@ Coverage scope: API modules and React workspace component, not the whole applica
     "pct": 79.48
   },
   "statements": {
-    "total": 878,
-    "covered": 559,
+    "total": 879,
+    "covered": 561,
     "skipped": 0,
-    "pct": 63.66
+    "pct": 63.82
   },
   "functions": {
-    "total": 182,
-    "covered": 100,
+    "total": 183,
+    "covered": 101,
     "skipped": 0,
-    "pct": 54.94
+    "pct": 55.19
   },
   "branches": {
-    "total": 504,
-    "covered": 253,
+    "total": 505,
+    "covered": 256,
     "skipped": 0,
-    "pct": 50.19
+    "pct": 50.69
   },
   "branchesTrue": {
     "total": 0,

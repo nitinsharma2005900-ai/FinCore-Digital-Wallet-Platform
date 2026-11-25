@@ -85,3 +85,17 @@ it('enforces MFA expiry, attempts and successful single use',async()=>{
  expect((await request(app).post('/api/v1/auth/mfa').send({challengeId:locked.challengeId,code:locked.simulationCode})).status).toBe(401);
 });
 it('serves OpenAPI for every registered contract',async()=>{const r=await request(app).get('/openapi.json');expect(r.status).toBe(200);expect(Object.keys(r.body.paths).length).toBeGreaterThan(30);});
+it('allows repeated successful refreshes and anonymous page loads while still limiting failed authentication',async()=>{
+ const u=await user();let cookie=u.cookie[0].split(';')[0];
+ for(let i=0;i<45;i++){
+  const anonymous=await request(app).post('/api/v1/auth/refresh').set('Origin','http://127.0.0.1:3000');expect(anonymous.status).toBe(401);expect(anonymous.body.error.code).toBe('NO_REFRESH_TOKEN');
+  const refreshed=await request(app).post('/api/v1/auth/refresh').set('Origin','http://127.0.0.1:3000').set('Cookie',cookie);expect(refreshed.status).toBe(200);cookie=refreshed.headers['set-cookie'][0].split(';')[0];
+ }
+ let blocked=false;
+ for(let i=0;i<41;i++){
+  const failed=await request(app).post('/api/v1/auth/login').send({});
+  if(failed.status===429){expect(failed.body.error.code).toBe('AUTH_RATE_LIMIT');blocked=true;break;}
+  expect(failed.status).toBe(422);
+ }
+ expect(blocked).toBe(true);
+});
