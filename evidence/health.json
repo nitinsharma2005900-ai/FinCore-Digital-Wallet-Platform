@@ -1,47 +1,47 @@
 {
-  "checkedAt": "2026-11-25T18:02:59.088Z",
+  "checkedAt": "2026-11-25T18:05:01.765Z",
   "services": {
     "web": {
       "url": "http://127.0.0.1:3000",
       "status": 200,
       "healthy": true,
-      "elapsedMs": 3358
+      "elapsedMs": 369
     },
     "api": {
       "url": "http://127.0.0.1:4001/health",
       "status": 200,
       "healthy": true,
-      "elapsedMs": 699
+      "elapsedMs": 48
     },
     "ready": {
       "url": "http://127.0.0.1:4001/ready",
       "status": 200,
       "healthy": true,
-      "elapsedMs": 244
+      "elapsedMs": 105
     },
     "swagger": {
       "url": "http://127.0.0.1:4001/api-docs/",
       "status": 200,
       "healthy": true,
-      "elapsedMs": 15
+      "elapsedMs": 9
     },
     "analytics": {
       "url": "http://127.0.0.1:8001/health",
       "status": 200,
       "healthy": true,
-      "elapsedMs": 6
+      "elapsedMs": 4
     },
     "worker": {
       "url": "http://127.0.0.1:8081",
       "status": 200,
       "healthy": true,
-      "elapsedMs": 38
+      "elapsedMs": 21
     },
     "mailpit": {
       "url": "http://127.0.0.1:8025/api/v1/info",
       "status": 200,
       "healthy": true,
-      "elapsedMs": 56
+      "elapsedMs": 2086
     }
   },
   "docker": {
