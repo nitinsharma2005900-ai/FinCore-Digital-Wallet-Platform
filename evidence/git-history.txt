@@ -1,0 +1,7 @@
+﻿*   6700f89 chore: merge verified worker shutdown hotfix
+|\  
+| * 5e93f37 fix: stop owned worker processes during local shutdown
+|/  
+* eac45d2 feat: complete staff workflows, delivery jobs, contracts and recovery evidence
+* aaacb4d fix: make local launch repeatable and exclude generated caches
+* 8534340 feat: implement local wallet ledger, analytics and customer workflows

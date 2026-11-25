@@ -48,7 +48,7 @@ incident+=['## Recovery confirmation','',f'Final journal: {json.dumps(capstone.g
 (ROOT/'docs/KNOWN_LIMITATIONS.md').write_text('# Remaining limitations and external prerequisites\n\n'+'\n'.join(f'- Assessment {i:02}: {limitations[i]}' for i in (8,9,10,11,14))+'\n\nNo real-money operation, live key, hosted CI, cloud URL or delivered external SMS is represented as completed.\n',encoding='utf-8')
 styles=getSampleStyleSheet();styles['BodyText'].fontSize=9;styles['BodyText'].leading=13
 story=[Paragraph('FinCore',styles['Title']),Paragraph('Digital Wallet, Ledger & Payment Processing Platform',styles['Heading2']),Paragraph('Synthetic educational platform: verified local results and explicit external limitations',styles['BodyText'])]
-documents=['README.md','ASSESSMENT_MATRIX.md','docs/architecture/ARCHITECTURE.md','docs/SECURITY.md','docs/API.md','docs/incidents/INCIDENT_REPORT.md','docs/deployment/DEPLOYMENT.md','docs/GOVERNANCE.md','docs/DEMO_SCRIPT.md','docs/KNOWN_LIMITATIONS.md']+[f'docs/assessments/{i:02}.md' for i in range(1,16)]
+documents=['README.md','docs/PROJECT_OVERVIEW.md','ASSESSMENT_MATRIX.md','docs/architecture/ARCHITECTURE.md','docs/SECURITY.md','docs/ENVIRONMENT.md','docs/API.md','docs/incidents/INCIDENT_REPORT.md','docs/deployment/DEPLOYMENT.md','docs/GOVERNANCE.md','docs/DEMO_SCRIPT.md','docs/KNOWN_LIMITATIONS.md']+[f'docs/assessments/{i:02}.md' for i in range(1,16)]
 for name in documents:
     story.extend([PageBreak(),Paragraph(escape(name),styles['Heading1'])])
     for line in (ROOT/name).read_text(encoding='utf-8').splitlines():

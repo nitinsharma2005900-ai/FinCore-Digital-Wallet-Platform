@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-25T17:05:59.350Z",
+  "services": {
+    "web": {
+      "url": "http://127.0.0.1:3000",
+      "status": 200,
+      "healthy": true
+    },
+    "api": {
+      "url": "http://127.0.0.1:4001/health",
+      "status": 200,
+      "healthy": true
+    },
+    "ready": {
+      "url": "http://127.0.0.1:4001/ready",
+      "status": 200,
+      "healthy": true
+    },
+    "swagger": {
+      "url": "http://127.0.0.1:4001/api-docs/",
+      "status": 200,
+      "healthy": true
+    },
+    "analytics": {
+      "url": "http://127.0.0.1:8001/health",
+      "status": 200,
+      "healthy": true
+    },
+    "worker": {
+      "url": "http://127.0.0.1:8081",
+      "status": 200,
+      "healthy": true
+    },
+    "mailpit": {
+      "url": "http://127.0.0.1:8025/api/v1/info",
+      "status": 200,
+      "healthy": true
+    }
+  },
+  "docker": {
+    "available": false,
+    "reason": "Docker executable not installed"
+  }
+}

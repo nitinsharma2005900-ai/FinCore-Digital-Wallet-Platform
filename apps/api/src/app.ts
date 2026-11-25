@@ -12,13 +12,18 @@ import {statements} from './statements';
 import {staff} from './staff';
 import swaggerUi from 'swagger-ui-express';
 import {openapi} from './openapi';
+import Redis from 'ioredis';
 export const app=express();
 app.disable('x-powered-by');app.use(requestId,helmet(),cors({origin:config.WEB_ORIGIN,credentials:true}),cookieParser());
 app.get('/health',(_req,res)=>res.json({status:'ok',service:'fincore-api',simulation:true}));
 app.get('/openapi.json',(_req,res)=>res.json(openapi));
 app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(openapi));
 app.get('/metrics',(_req,res)=>res.type('text/plain').send(`fincore_uptime_seconds ${process.uptime()}\nfincore_memory_bytes ${process.memoryUsage().rss}\n`));
-app.get('/ready',async(_req,res)=>{await db.$queryRaw`SELECT 1`;send(res,{database:'ok'});});
+app.get('/ready',async(_req,res)=>{
+ const redis=new Redis(config.REDIS_URL,{lazyConnect:true,connectTimeout:1500,maxRetriesPerRequest:0,retryStrategy:()=>null});redis.on('error',()=>{});
+ try{await db.$queryRaw`SELECT 1`;await redis.connect();await redis.ping();const analytics=await fetch(config.FASTAPI_SERVICE_URL+'/health',{signal:AbortSignal.timeout(1500)});if(!analytics.ok)throw Error('Analytics unavailable');send(res,{database:'ok',redis:'ok',analytics:'ok'});}
+ catch{res.status(503);send(res,{status:'not_ready',message:'A required dependency is unavailable'});}finally{redis.disconnect();}
+});
 app.post('/api/v1/webhooks/payments',express.raw({type:'application/json',limit:'100kb'}),webhook);
 app.use(express.json({limit:'100kb'}),rateLimit({windowMs:60000,limit:300}));
 app.use('/api/v1/auth',auth);

@@ -6,62 +6,63 @@
  RUN  v5.1.2 C:/Users/amits/Documents/FinCore
       Coverage enabled with v8
 
-{"level":40,"time":1795625894077,"pid":32244,"hostname":"Nitin","requestId":"e24f1c6d-a38b-488f-af88-ef064f294398","status":401,"code":"UNAUTHENTICATED","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894084,"pid":32244,"hostname":"Nitin","requestId":"84e68b20-2f92-497c-8100-8fad8e641953","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
-{"level":40,"time":1795625894091,"pid":32244,"hostname":"Nitin","requestId":"2b550853-1db5-4de7-9327-8cf2e9d8ff4c","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894098,"pid":32244,"hostname":"Nitin","requestId":"1d9cbf2e-26aa-4f58-b59f-b37e6344bf0e","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894106,"pid":32244,"hostname":"Nitin","requestId":"1cec236e-6b0f-4c60-9df2-5dc6448d8a90","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894113,"pid":32244,"hostname":"Nitin","requestId":"34450b1c-d491-438c-9528-a9d10ed51987","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894119,"pid":32244,"hostname":"Nitin","requestId":"9ffef5af-96fb-4ad8-9fd2-a82f13a8a75c","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894130,"pid":32244,"hostname":"Nitin","requestId":"afdac62e-4a33-4791-8c9d-9b09a2c23bfd","status":404,"code":"WALLET_NOT_FOUND","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894137,"pid":32244,"hostname":"Nitin","requestId":"9a2234b6-4209-49c6-90bb-8f6b64529b76","status":403,"code":"REAUTH_REQUIRED","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894146,"pid":32244,"hostname":"Nitin","requestId":"6d371e25-8aae-4e61-99f5-05dff75ef3df","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
-{"level":40,"time":1795625894154,"pid":32244,"hostname":"Nitin","requestId":"f93d7e5a-9856-4077-be60-e9faea7a64d6","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
-{"level":40,"time":1795625894162,"pid":32244,"hostname":"Nitin","requestId":"e513f75f-3c04-4fb3-a7ee-9438e193b005","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
-{"level":40,"time":1795625894169,"pid":32244,"hostname":"Nitin","requestId":"9960ea36-976a-44ea-85d0-a725b0c02aa6","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
-{"level":40,"time":1795625894178,"pid":32244,"hostname":"Nitin","requestId":"e41d8a81-5c1e-4eb5-adef-5315c888ac51","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
-{"level":40,"time":1795625894252,"pid":32244,"hostname":"Nitin","requestId":"5863b311-cb14-4902-b4a0-40c65f2fc647","status":422,"code":"INSUFFICIENT_FUNDS","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894333,"pid":32244,"hostname":"Nitin","requestId":"f8e672e6-58ae-4629-9bcf-bc1e74273eef","status":409,"code":"IDEMPOTENCY_CONFLICT","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894344,"pid":32244,"hostname":"Nitin","requestId":"cc868444-83a8-4b7b-ba40-23dd8d451259","status":404,"code":"NOT_FOUND","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625894537,"pid":32244,"hostname":"Nitin","requestId":"2e3336af-73a9-4b5c-a636-cab56ee1d988","status":400,"code":"INVALID_SIGNATURE","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625895639,"pid":32244,"hostname":"Nitin","requestId":"c2a4b3e9-a5a4-4385-84ba-6bc37b6017c3","status":403,"code":"CSRF_REJECTED","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625895651,"pid":32244,"hostname":"Nitin","requestId":"15b55758-3820-4ea9-97bc-a9be86e412f0","status":401,"code":"REFRESH_REVOKED","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625895659,"pid":32244,"hostname":"Nitin","requestId":"50bacbb6-beb8-41f9-bbc7-cfa5504397e1","status":401,"code":"SESSION_REVOKED","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625897085,"pid":32244,"hostname":"Nitin","requestId":"36c6be84-955f-4a32-ae9f-2bb22be6bfca","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625897624,"pid":32244,"hostname":"Nitin","requestId":"bb8e526f-38e6-4b13-853d-973127fb894f","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625897635,"pid":32244,"hostname":"Nitin","requestId":"89117646-e935-4b82-9383-7a2a89724aae","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625897646,"pid":32244,"hostname":"Nitin","requestId":"ad4b2308-d820-4809-9f77-f5d151add329","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625897657,"pid":32244,"hostname":"Nitin","requestId":"db615584-e5e5-428d-aceb-5233d6a2fb2d","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625897667,"pid":32244,"hostname":"Nitin","requestId":"3088459a-f15e-464b-9bc5-b0a73fb0988a","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
-{"level":40,"time":1795625897676,"pid":32244,"hostname":"Nitin","requestId":"424b1147-9c92-4a82-a94b-9f7de5a31577","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
- ✓ tests/integration/platform.test.ts (8 tests) 10609ms
-   ✓ rotates refresh cookies, detects replay and revokes the family 930ms
-   ✓ enforces MFA expiry, attempts and successful single use 2017ms
- ✓ tests/integration/ledger.test.ts (4 tests) 733ms
- ✓ tests/frontend/table.test.tsx (2 tests) 436ms
-   ✓ filters records and paginates results without losing record details 322ms
+{"level":40,"time":1795626299415,"pid":32844,"hostname":"Nitin","requestId":"43b7f9c6-4ea2-43b4-91ab-0f4e29d6a28c","status":401,"code":"UNAUTHENTICATED","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299423,"pid":32844,"hostname":"Nitin","requestId":"4d8e546b-3ec5-442c-8b03-5ebf6366f153","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
+{"level":40,"time":1795626299436,"pid":32844,"hostname":"Nitin","requestId":"705464e4-ee38-46bb-8a0c-32acab5a43b3","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299445,"pid":32844,"hostname":"Nitin","requestId":"1c862fcc-58ab-4cdc-ae86-3deb3beae347","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299457,"pid":32844,"hostname":"Nitin","requestId":"b700f6ef-f6cc-40bc-b4c4-fda3eaffa2ea","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299471,"pid":32844,"hostname":"Nitin","requestId":"a9483e87-470d-451d-9e8f-6b947fac0796","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299487,"pid":32844,"hostname":"Nitin","requestId":"95b7def3-0d97-4559-a119-3bc38a98512b","status":403,"code":"FORBIDDEN","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299503,"pid":32844,"hostname":"Nitin","requestId":"cffc7ae0-46da-4ee0-b9d7-4187aa79cc67","status":404,"code":"WALLET_NOT_FOUND","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299512,"pid":32844,"hostname":"Nitin","requestId":"67de41ba-21c6-4802-8688-2ab8175bbb0a","status":403,"code":"REAUTH_REQUIRED","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299524,"pid":32844,"hostname":"Nitin","requestId":"04e9a150-4474-4f36-a23c-91663d5e5ae4","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
+{"level":40,"time":1795626299534,"pid":32844,"hostname":"Nitin","requestId":"cedff67b-4701-47b9-a02b-46bdf197a1f6","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
+{"level":40,"time":1795626299543,"pid":32844,"hostname":"Nitin","requestId":"19acd41b-5f97-4cbc-9f62-df2c7c16cd4b","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
+{"level":40,"time":1795626299553,"pid":32844,"hostname":"Nitin","requestId":"f6f20f7e-1357-4a77-8d12-cf0b42d3a834","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
+{"level":40,"time":1795626299562,"pid":32844,"hostname":"Nitin","requestId":"49b76218-c5bd-4ec0-a1a1-1e4e55737529","status":422,"code":"VALIDATION_ERROR","errorType":"ZodError","msg":"Request rejected"}
+{"level":40,"time":1795626299656,"pid":32844,"hostname":"Nitin","requestId":"16944dea-8af5-47bb-9df3-ef171ef73887","status":422,"code":"INSUFFICIENT_FUNDS","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299765,"pid":32844,"hostname":"Nitin","requestId":"60de39d0-277e-4e48-b832-01661a7ef644","status":409,"code":"IDEMPOTENCY_CONFLICT","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626299779,"pid":32844,"hostname":"Nitin","requestId":"13ae4f68-c0f9-4b1f-96f9-288a0d48e376","status":404,"code":"NOT_FOUND","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626300007,"pid":32844,"hostname":"Nitin","requestId":"2287fa6f-7aa1-4464-a590-81c13e5862de","status":400,"code":"INVALID_SIGNATURE","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626301458,"pid":32844,"hostname":"Nitin","requestId":"55a93cbe-9eef-46ba-a585-77a34e0d9ef9","status":403,"code":"CSRF_REJECTED","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626301467,"pid":32844,"hostname":"Nitin","requestId":"0bf52187-c9b9-4d41-9cc6-d06414af647c","status":401,"code":"REFRESH_REVOKED","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626301474,"pid":32844,"hostname":"Nitin","requestId":"c90cd220-7cad-4dfc-abcc-d290b2cdbfd5","status":401,"code":"SESSION_REVOKED","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626302797,"pid":32844,"hostname":"Nitin","requestId":"9498084f-1209-45c2-aaec-35c50a81a683","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626303235,"pid":32844,"hostname":"Nitin","requestId":"70a84db2-6ee1-4114-880d-eeff6c8b054e","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626303244,"pid":32844,"hostname":"Nitin","requestId":"b1a6d94b-ce8b-4a63-91aa-df5cf74c14ea","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626303252,"pid":32844,"hostname":"Nitin","requestId":"fa84ef17-16bd-40e4-959b-6fbd429c7bbb","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626303261,"pid":32844,"hostname":"Nitin","requestId":"a9429036-a51e-470d-83bd-d08e287511b4","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626303269,"pid":32844,"hostname":"Nitin","requestId":"ab203c7d-ae1f-4323-8795-5a9cc01effc7","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
+{"level":40,"time":1795626303276,"pid":32844,"hostname":"Nitin","requestId":"82112f79-6306-4357-a75c-3af392108977","status":401,"code":"MFA_INVALID","errorType":"Error","msg":"Request rejected"}
+ ✓ tests/integration/platform.test.ts (8 tests) 13409ms
+   ✓ supports transfers, details, CSV/PDF statements, disputes and reversal 315ms
+   ✓ handles signed webhook replay, mismatch, failed settlement and out-of-order delivery 396ms
+   ✓ rotates refresh cookies, detects replay and revokes the family 1092ms
+   ✓ enforces MFA expiry, attempts and successful single use 1801ms
+ ✓ tests/integration/ledger.test.ts (4 tests) 961ms
+ ✓ tests/frontend/table.test.tsx (2 tests) 317ms
 
  Test Files  3 passed (3)
       Tests  14 passed (14)
-   Start at  22:28:06
-   Duration  16.43s (tests 76%, environment 15%, import 8%, worker 1%)
+   Start at  22:34:49
+   Duration  19.44s (tests 80%, environment 13%, import 7%, transform 1%, worker 1%)
 
-    Isolate  3 workers spawned · ~984ms startup each (spawn + environment, per file)
-             at least ~1.97s faster with isolate: false — reuses workers across files instead of one per file
+    Isolate  3 workers spawned · ~1.00s startup each (spawn + environment, per file)
+             at least ~2.00s faster with isolate: false — reuses workers across files instead of one per file
 
 JUNIT report written to C:/Users/amits/Documents/FinCore/evidence/node-tests.xml
  % Coverage report from v8
 ----------------|---------|----------|---------|---------|----------------------
 File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s    
 ----------------|---------|----------|---------|---------|----------------------
-All files       |   63.29 |    48.91 |   53.84 |   79.46 |                      
- api/src        |   65.08 |    55.33 |   59.54 |   82.76 |                      
+All files       |   62.64 |    48.92 |   53.21 |   78.99 |                      
+ api/src        |   64.32 |    55.27 |   58.64 |   82.21 |                      
   analytics.ts  |   66.66 |       50 |     100 |      80 | 8                    
-  app.ts        |   78.26 |      100 |      20 |     100 |                      
+  app.ts        |   51.42 |        0 |   14.28 |   83.33 | 23-25                
   auth.ts       |   85.15 |    79.45 |   88.88 |   93.75 | 30,71-72,112-114     
   config.ts     |   66.66 |       40 |     100 |     100 | 10-11                
   core.ts       |   65.95 |       52 |      90 |   73.68 | 16,22-25             
-  customer.ts   |   43.31 |    14.81 |   30.95 |    62.5 | ...30-40,51-54,76-80 
+  customer.ts   |   45.07 |    17.85 |   30.95 |   63.51 | ...30-40,51-54,78-82 
   ledger.ts     |   93.87 |    85.36 |     100 |   97.05 | 48                   
   openapi.ts    |     100 |    95.45 |     100 |     100 | 48                   
   payments.ts   |   65.51 |    46.15 |      75 |    80.7 | 54,61-65,72-76       
@@ -73,10 +74,10 @@ All files       |   63.29 |    48.91 |   53.84 |   79.46 |
 ----------------|---------|----------|---------|---------|----------------------
 
 =============================== Coverage summary ===============================
-Statements   : 63.29% ( 519/820 )
-Branches     : 48.91% ( 225/460 )
-Functions    : 53.84% ( 91/169 )
-Lines        : 79.46% ( 329/414 )
+Statements   : 62.64% ( 525/838 )
+Branches     : 48.92% ( 227/464 )
+Functions    : 53.21% ( 91/171 )
+Lines        : 78.99% ( 331/419 )
 ================================================================================
 (!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
   - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json

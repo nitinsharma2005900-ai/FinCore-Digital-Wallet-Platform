@@ -40,6 +40,7 @@ Prepare financial integration tests with `node scripts/prepare-tests.mjs`, then 
 - Encrypted backup/isolated restore: matching journal counts and balances; evidence/restore-drill.json.
 - Lint, type checking, tests, build and contract generation are captured by scripts/verify.mjs in evidence/checks.json.
 - Latest local npm and Python dependency scans report no known vulnerabilities. These scans do not constitute a security certification. Prisma 6 tooling uses pinned patched effect/deepmerge-ts overrides; migration/generation and tests were executed with them.
+- Gitleaks committed-history scan passed. Two static CI-only synthetic strings are narrowly allowlisted by exact value and workflow path; actual .env/runtime credentials remain excluded.
 
 ## Financial semantics
 

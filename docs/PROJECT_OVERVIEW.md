@@ -1,0 +1,9 @@
+# Executive summary and business requirements
+
+FinCore is a synthetic digital-wallet platform for demonstrating secure customer banking workflows and operational financial controls. Customers manage INR wallets/accounts, beneficiaries, transfers, statements, disputes and security settings. Support investigates disputes; operations reviews explainable risk and reconciles provider records; finance authorizes compensating entries; platform administration manages access, configuration and audit history.
+
+The primary acceptance requirement is financial integrity: no duplicate debit/credit, no unauthorized negative customer balance, no unbalanced posted journal, atomic rollback and immutable history. PostgreSQL enforces these conditions independently of the interface. An explicit local payment simulator and Mailpit permit credential-free demonstrations without implying a real provider integration. Python calculations use Decimal and transparent risk rules rather than an LLM.
+
+Functional scope includes versioned APIs, role/ownership checks, reauthentication, MFA simulation, token rotation/revocation, reservations, payment intents, signed events, reconciliation, full refunds/reversals, statement exports and retryable background delivery. Non-functional controls include structured logs, safe errors, metrics, health checks, bounded queries, accessible responsive interfaces, locked dependencies and evidence-based documentation.
+
+The implementation is an educational system, not a production financial/compliance certification. External sandbox execution and cloud operations are distinct acceptance stages. The assessment matrix records which parts were actually run, and the consolidated PDF/ZIP includes genuine local test, browser, capstone, incident and restore evidence. No real customer information, live payment credentials, invented CI approvals or fabricated hosted URL is included.

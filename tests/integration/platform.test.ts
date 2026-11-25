@@ -43,6 +43,7 @@ it('supports transfers, details, CSV/PDF statements, disputes and reversal',asyn
  const input={fromWalletId:wallet.id,beneficiaryId:beneficiary.id,amount:'10.00',currency:'INR',description:'Integration transfer',confirmation:true};const h=headers(customer);
  const t=await request(app).post('/api/v1/transfers').set(h).send(input);expect(t.status).toBe(201);
  expect((await request(app).post('/api/v1/transfers').set(h).send(input)).body.data.id).toBe(t.body.data.id);
+ const {config}=await import('../../apps/api/src/config');const originalUrl=config.FASTAPI_SERVICE_URL;config.FASTAPI_SERVICE_URL='http://127.0.0.1:1';try{expect((await request(app).post('/api/v1/transfers').set(h).send(input)).body.data.id).toBe(t.body.data.id);}finally{config.FASTAPI_SERVICE_URL=originalUrl;}
  expect((await request(app).post('/api/v1/transfers').set(h).send({...input,amount:'11.00'})).status).toBe(409);
  expect((await request(app).get('/api/v1/transactions/'+t.body.data.id).set(headers(admin))).status).toBe(404);
  for(const format of ['json','csv','pdf']){const response=await request(app).get('/api/v1/statements').query({walletId:wallet.id,from:new Date().toISOString().slice(0,10),to:new Date().toISOString().slice(0,10),format}).set(headers(customer));expect(response.status).toBe(200);expect(response.headers['content-type']).toContain(format==='json'?'application/json':format==='csv'?'text/csv':'application/pdf');}

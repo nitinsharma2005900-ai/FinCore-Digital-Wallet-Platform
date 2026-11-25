@@ -4,7 +4,7 @@ Use semantic commits and isolated feature/hotfix branches. CODEOWNERS covers led
 
 Before enabling GitHub protection, designate a repository. Require pull requests, CODEOWNER approval, passing Financial quality gates, one independent approval, stale-review dismissal, conversation resolution, restricted force pushes and protected semantic release tags. Use staging/production GitHub environments with required production reviewers and protected deployment branches. These are repository settings and have not been fabricated locally.
 
-The controlled hotfix example corrects sidebar scrolling on short viewports, caught by the Playwright customer profile navigation test. The local hotfix branch, commit and merge are genuine; no external review or approval is claimed. See evidence/git-history.txt for actual history.
+The controlled hotfix corrects the shutdown script leaving BullMQ worker processes alive. Branch hotfix/stop-worker adds explicit worker shutdown, verifies process ownership, and terminates owned process trees. The running worker was stopped with the WorkerOnly switch, its absence verified, and a replacement worker started. See evidence/hotfix-stop-worker.json and evidence/git-history.txt for actual results and merge history. No external review or approval is claimed.
 
 Publishing commands after choosing a repository:
 

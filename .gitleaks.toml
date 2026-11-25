@@ -1,0 +1,9 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Explicit synthetic CI-only test strings; never valid external credentials"
+condition = "AND"
+paths = ['''^\.github/workflows/ci\.yml$''']
+regexTarget = "secret"
+regexes = ['''^ci_synthetic_(internal|access|refresh|mfa|webhook)_secret_32_characters$''']

@@ -16,6 +16,7 @@ FROM node:22-bookworm-slim AS runtime
 RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates postgresql-client && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=build --chown=node:node /app /app
+RUN mkdir -p /app/.runtime && chown node:node /app/.runtime
 USER node
 ENV NODE_ENV=production HOST=0.0.0.0 PSQL_BIN=psql
 EXPOSE 3000 4000

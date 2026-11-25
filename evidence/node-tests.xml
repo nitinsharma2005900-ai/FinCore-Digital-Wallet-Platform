@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="14" failures="0" errors="0" time="11.77822">
-    <testsuite name="tests/frontend/table.test.tsx" timestamp="2026-11-25T16:58:22.936Z" hostname="Nitin" tests="2" failures="0" errors="0" skipped="0" time="0.436019">
-        <testcase classname="tests/frontend/table.test.tsx" name="filters records and paginates results without losing record details" time="0.3217498">
+<testsuites name="vitest tests" tests="14" failures="0" errors="0" time="14.6875484">
+    <testsuite name="tests/frontend/table.test.tsx" timestamp="2026-11-25T17:05:08.718Z" hostname="Nitin" tests="2" failures="0" errors="0" skipped="0" time="0.3170292">
+        <testcase classname="tests/frontend/table.test.tsx" name="filters records and paginates results without losing record details" time="0.2635448">
         </testcase>
-        <testcase classname="tests/frontend/table.test.tsx" name="shows a safe server error and allows correction" time="0.1124572">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/integration/ledger.test.ts" timestamp="2026-11-25T16:58:22.938Z" hostname="Nitin" tests="4" failures="0" errors="0" skipped="0" time="0.732826">
-        <testcase classname="tests/integration/ledger.test.ts" name="PostgreSQL financial integrity &gt; posts once, detects conflicting reuse and preserves balances" time="0.1164518">
-        </testcase>
-        <testcase classname="tests/integration/ledger.test.ts" name="PostgreSQL financial integrity &gt; serializes competing spends and rolls back insufficient funds" time="0.0768351">
-        </testcase>
-        <testcase classname="tests/integration/ledger.test.ts" name="PostgreSQL financial integrity &gt; rejects invalid precision and protects journal records" time="0.0485442">
-        </testcase>
-        <testcase classname="tests/integration/ledger.test.ts" name="PostgreSQL financial integrity &gt; verifies signatures and rejects tampering" time="0.001183">
+        <testcase classname="tests/frontend/table.test.tsx" name="shows a safe server error and allows correction" time="0.0515629">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/platform.test.ts" timestamp="2026-11-25T16:58:22.939Z" hostname="Nitin" tests="8" failures="0" errors="0" skipped="0" time="10.609375">
-        <testcase classname="tests/integration/platform.test.ts" name="rejects unauthenticated access and role escalation at registration" time="0.0492405">
+    <testsuite name="tests/integration/ledger.test.ts" timestamp="2026-11-25T17:05:08.721Z" hostname="Nitin" tests="4" failures="0" errors="0" skipped="0" time="0.9612312">
+        <testcase classname="tests/integration/ledger.test.ts" name="PostgreSQL financial integrity &gt; posts once, detects conflicting reuse and preserves balances" time="0.2985994">
         </testcase>
-        <testcase classname="tests/integration/platform.test.ts" name="enforces ownership, validation and sensitive-action confirmation" time="0.0575684">
+        <testcase classname="tests/integration/ledger.test.ts" name="PostgreSQL financial integrity &gt; serializes competing spends and rolls back insufficient funds" time="0.0960326">
         </testcase>
-        <testcase classname="tests/integration/platform.test.ts" name="holds reduce available funds and release restores them" time="0.0862249">
+        <testcase classname="tests/integration/ledger.test.ts" name="PostgreSQL financial integrity &gt; rejects invalid precision and protects journal records" time="0.0566095">
         </testcase>
-        <testcase classname="tests/integration/platform.test.ts" name="supports transfers, details, CSV/PDF statements, disputes and reversal" time="0.2530114">
+        <testcase classname="tests/integration/ledger.test.ts" name="PostgreSQL financial integrity &gt; verifies signatures and rejects tampering" time="0.0012843">
         </testcase>
-        <testcase classname="tests/integration/platform.test.ts" name="handles signed webhook replay, mismatch, failed settlement and out-of-order delivery" time="0.2123129">
+    </testsuite>
+    <testsuite name="tests/integration/platform.test.ts" timestamp="2026-11-25T17:05:08.722Z" hostname="Nitin" tests="8" failures="0" errors="0" skipped="0" time="13.409288">
+        <testcase classname="tests/integration/platform.test.ts" name="rejects unauthenticated access and role escalation at registration" time="0.0839549">
         </testcase>
-        <testcase classname="tests/integration/platform.test.ts" name="rotates refresh cookies, detects replay and revokes the family" time="0.9304363">
+        <testcase classname="tests/integration/platform.test.ts" name="enforces ownership, validation and sensitive-action confirmation" time="0.0730586">
         </testcase>
-        <testcase classname="tests/integration/platform.test.ts" name="enforces MFA expiry, attempts and successful single use" time="2.016937">
+        <testcase classname="tests/integration/platform.test.ts" name="holds reduce available funds and release restores them" time="0.1079815">
         </testcase>
-        <testcase classname="tests/integration/platform.test.ts" name="serves OpenAPI for every registered contract" time="0.0068787">
+        <testcase classname="tests/integration/platform.test.ts" name="supports transfers, details, CSV/PDF statements, disputes and reversal" time="0.3152445">
+        </testcase>
+        <testcase classname="tests/integration/platform.test.ts" name="handles signed webhook replay, mismatch, failed settlement and out-of-order delivery" time="0.3961817">
+        </testcase>
+        <testcase classname="tests/integration/platform.test.ts" name="rotates refresh cookies, detects replay and revokes the family" time="1.0918498">
+        </testcase>
+        <testcase classname="tests/integration/platform.test.ts" name="enforces MFA expiry, attempts and successful single use" time="1.8013753">
+        </testcase>
+        <testcase classname="tests/integration/platform.test.ts" name="serves OpenAPI for every registered contract" time="0.0062597">
         </testcase>
     </testsuite>
 </testsuites>
