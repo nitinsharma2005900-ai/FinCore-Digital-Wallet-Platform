@@ -6,7 +6,7 @@ services:
     plan: free
     dockerfilePath: ./infrastructure/docker/Node.Dockerfile
     dockerContext: .
-    dockerCommand: npm run start -w @fincore/web
+    dockerCommand: node scripts/start-web.cjs
     healthCheckPath: /
     autoDeployTrigger: off
     envVars:
