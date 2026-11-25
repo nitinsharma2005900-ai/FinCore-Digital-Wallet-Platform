@@ -62,7 +62,7 @@ with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
         dirs[:]=[d for d in dirs if d not in excluded]
         for name in files:
             p=Path(directory)/name
-            if name=='.env' or (name.startswith('.env.') and name!='.env.example') or name=='.coverage' or p.suffix in ('.zip','.log','.pyc','.tsbuildinfo','.enc','.backup'):continue
+            if name in ('.env','.coverage','package-verification.json') or (name.startswith('.env.') and name!='.env.example') or p.suffix in ('.zip','.log','.pyc','.tsbuildinfo','.enc','.backup'):continue
             z.write(p,str(p.relative_to(ROOT)))
 with tempfile.TemporaryDirectory(prefix='fincore-verify-') as target:
     with zipfile.ZipFile(archive) as z:

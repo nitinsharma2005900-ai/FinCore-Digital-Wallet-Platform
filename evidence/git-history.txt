@@ -1,4 +1,5 @@
-﻿*   6700f89 chore: merge verified worker shutdown hotfix
+﻿* 8f1d4ac docs: finalize verified assessments, security checks and submission package
+*   6700f89 chore: merge verified worker shutdown hotfix
 |\  
 | * 5e93f37 fix: stop owned worker processes during local shutdown
 |/  
